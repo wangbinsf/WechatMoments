@@ -10,6 +10,7 @@ import Foundation
 
 struct WMModelResolver {
     
+    /// 获取推文
     func fetchTweets(from data: Data) -> [WMTweetModel] {
         var tweets: [WMTweetModel] = []
         do {
@@ -30,6 +31,14 @@ struct WMModelResolver {
                 legalData.append(tweet)
             }
         }
+        /// 异步IO
+        DispatchQueue.global().async {
+            WMFileManager.saveErrorData(illegalData)
+        }
         return legalData
     }
+    
+    
+    
+    
 }

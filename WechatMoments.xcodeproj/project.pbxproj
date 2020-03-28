@@ -10,7 +10,6 @@
 		210C090F5C49D1ADFBB09BE8 /* Pods_WechatMoments_WechatMomentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B16C894EE73FEE8F65252F /* Pods_WechatMoments_WechatMomentsTests.framework */; };
 		C345B0D4242EE45200B7A7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0D3242EE45200B7A7EC /* AppDelegate.swift */; };
 		C345B0D6242EE45200B7A7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */; };
-		C345B0D8242EE45200B7A7EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0D7242EE45200B7A7EC /* ViewController.swift */; };
 		C345B0DB242EE45200B7A7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C345B0D9242EE45200B7A7EC /* Main.storyboard */; };
 		C345B0DD242EE45400B7A7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C345B0DC242EE45400B7A7EC /* Assets.xcassets */; };
 		C345B0E0242EE45400B7A7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C345B0DE242EE45400B7A7EC /* LaunchScreen.storyboard */; };
@@ -21,6 +20,9 @@
 		C345B105242EF53300B7A7EC /* homework.json in Resources */ = {isa = PBXBuildFile; fileRef = C345B104242EF53300B7A7EC /* homework.json */; };
 		C345B10B242EF77F00B7A7EC /* WMTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10A242EF77F00B7A7EC /* WMTweetModel.swift */; };
 		C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */; };
+		C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10E242F288500B7A7EC /* WMFileManager.swift */; };
+		C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B111242F29A900B7A7EC /* WMTweetCell.swift */; };
+		C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,6 @@
 		C345B0D0242EE45200B7A7EC /* WechatMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WechatMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C345B0D3242EE45200B7A7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C345B0D7242EE45200B7A7EC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C345B0DA242EE45200B7A7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C345B0DC242EE45400B7A7EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C345B0DF242EE45400B7A7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +58,9 @@
 		C345B104242EF53300B7A7EC /* homework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homework.json; sourceTree = "<group>"; };
 		C345B10A242EF77F00B7A7EC /* WMTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetModel.swift; sourceTree = "<group>"; };
 		C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMModelResolver.swift; sourceTree = "<group>"; };
+		C345B10E242F288500B7A7EC /* WMFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMFileManager.swift; sourceTree = "<group>"; };
+		C345B111242F29A900B7A7EC /* WMTweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetCell.swift; sourceTree = "<group>"; };
+		C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMDataProvider.swift; sourceTree = "<group>"; };
 		C7B16C894EE73FEE8F65252F /* Pods_WechatMoments_WechatMomentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WechatMoments_WechatMomentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,10 +136,12 @@
 		C345B107242EF55900B7A7EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C345B113242F2C7400B7A7EC /* Service */,
+				C345B110242F298600B7A7EC /* View */,
 				C345B109242EF73D00B7A7EC /* Model */,
 				C345B0D3242EE45200B7A7EC /* AppDelegate.swift */,
 				C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */,
-				C345B0D7242EE45200B7A7EC /* ViewController.swift */,
+				C345B10E242F288500B7A7EC /* WMFileManager.swift */,
 				C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */,
 				C345B0FE242EEDB300B7A7EC /* WMCustomNavBar.swift */,
 			);
@@ -161,6 +167,22 @@
 				C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C345B110242F298600B7A7EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C345B111242F29A900B7A7EC /* WMTweetCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C345B113242F2C7400B7A7EC /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		CCD734DD52F7C5860EEBE157 /* Frameworks */ = {
@@ -326,12 +348,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C345B0FD242EED9000B7A7EC /* WMTweetsListViewController.swift in Sources */,
-				C345B0D8242EE45200B7A7EC /* ViewController.swift in Sources */,
+				C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */,
+				C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */,
 				C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */,
 				C345B0FF242EEDB300B7A7EC /* WMCustomNavBar.swift in Sources */,
 				C345B0D4242EE45200B7A7EC /* AppDelegate.swift in Sources */,
 				C345B0D6242EE45200B7A7EC /* SceneDelegate.swift in Sources */,
 				C345B10B242EF77F00B7A7EC /* WMTweetModel.swift in Sources */,
+				C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

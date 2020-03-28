@@ -10,17 +10,17 @@ import Foundation
 
 struct WMTweetModel {
     
-    struct Sender: Decodable {
+    struct Sender: Codable {
         let username: String
         let nick: String
         let avatar: String
     }
     
-    struct Image: Decodable {
+    struct Image: Codable {
         let url: String
     }
     
-    struct Comment: Decodable {
+    struct Comment: Codable {
         let content: String
         let sender: Sender
     }
@@ -33,7 +33,8 @@ struct WMTweetModel {
     let comments: [Comment]?
     
 }
-extension WMTweetModel: Decodable {
+extension WMTweetModel: Codable {
+    
     enum CodingKeys: String, CodingKey {
         case content
         case images
@@ -42,6 +43,7 @@ extension WMTweetModel: Decodable {
         case error
         case unknownError = "unknown error"
     }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         print(container)
@@ -51,5 +53,15 @@ extension WMTweetModel: Decodable {
         self.images = try container.decodeIfPresent([Image].self, forKey: .images)
         self.sender = try container.decodeIfPresent(Sender.self, forKey: .sender)
         self.comments = try container.decodeIfPresent([Comment].self, forKey: .comments)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(error, forKey: .error)
+        try container.encode(unknownError, forKey: .unknownError)
+        try container.encode(content, forKey: .content)
+        try container.encode(images, forKey: .images)
+        try container.encode(sender, forKey: .sender)
+        try container.encode(comments, forKey: .comments)
     }
 }
