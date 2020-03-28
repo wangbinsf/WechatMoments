@@ -1,10 +1,9 @@
-platform :ios, '10.0'
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
 
 target 'WechatMoments' do
-  use_frameworks!
 
-  target 'WechatMomentsTests' do
-#    pod 'SnapKit', '4.2.0'
-  end
-
+  pod 'SnapKit', '4.2.0'
+  pod 'MJRefresh'
 end
