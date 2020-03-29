@@ -36,7 +36,7 @@ struct WMFileManager {
     private static func createFile(fileUrl: URL) -> Bool {
         let manager = FileManager.default
         let file = fileUrl
-        print("文件: \(file)")
+//        print("文件: \(file)")
         let exist = manager.fileExists(atPath: file.path)
         if !exist {
             let createSuccess = manager.createFile(atPath: file.path,contents:nil,attributes:nil)

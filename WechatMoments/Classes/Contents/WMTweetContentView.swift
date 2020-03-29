@@ -9,7 +9,10 @@
 import UIKit
 
 class WMTweetContentView: UIView {
-
+    
+    var tweet: WMTweetModel?
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -19,7 +22,7 @@ class WMTweetContentView: UIView {
     }
     
     func refresh(data: WMTweetModel) {
-        
+        self.tweet = data
     }
 
 }

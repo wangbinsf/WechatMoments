@@ -35,6 +35,7 @@ class WMTweetTextContentView: WMTweetContentView {
     }
     
     override func refresh(data: WMTweetModel) {
+        super.refresh(data: data)
         textLabel.text = data.content
     }
 

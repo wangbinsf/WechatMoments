@@ -64,7 +64,10 @@ class WMTweetsListViewController: UIViewController {
 //        tableView.dataSource = self
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
-        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "WMTweetTextContentView")
+        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextContentView.self)")
+        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetImageContentView.self)")
+        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetMultipleImageContentView.self)")
+        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextImageContentView.self)")
     }
     
     private func setupTableAdapter() {

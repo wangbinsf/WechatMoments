@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 protocol WMCellLayoutConfigProtocol {
+    
     /// 返回内容大小
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize
     

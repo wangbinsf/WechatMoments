@@ -40,8 +40,20 @@ extension WMTweetTableViewAdapter: UITableViewDataSource {
         let tweet = tweets[indexPath.row]
         let config = WMConfig.shared.layoutConfig
         let reuseIdentifier = config.cellClass(model: tweet)
+//        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+//        if cell == nil {
+//            tableView.register(WMTweetCell.self, forCellReuseIdentifier: reuseIdentifier)
+//            cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+//            if let tweetCell = cell as? WMTweetCell {
+//                tweetCell.refreshData(tweet)
+//                cell = tweetCell
+//            }
+//        }
+        
+//        let reuseIdentifier = "\(WMTweetCell.self)"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! WMTweetCell
         cell.refreshData(tweet)
+        print("cell===\(cell)")
         return cell
     }
     

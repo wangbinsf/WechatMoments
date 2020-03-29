@@ -28,7 +28,7 @@ struct WMTweetModel {
     let error: String?
     let unknownError: String?
     let content: String?
-    let contentType: ContentType
+    var contentType: ContentType
     let images: [Image]?
     let sender: Sender?
     let comments: [Comment]?
@@ -56,16 +56,7 @@ extension WMTweetModel: Codable {
         self.images = images
         self.sender = try container.decodeIfPresent(Sender.self, forKey: .sender)
         self.comments = try container.decodeIfPresent([Comment].self, forKey: .comments)
-        
-        if content == nil && images != nil {
-            self.contentType = .image
-        } else if content != nil && images == nil {
-            self.contentType = .text
-        } else if content != nil && images != nil {
-            self.contentType = .text_image
-        } else {
-            self.contentType = .unknowType
-        }
+        self.contentType = .unknowType
     }
     
     func encode(to encoder: Encoder) throws {

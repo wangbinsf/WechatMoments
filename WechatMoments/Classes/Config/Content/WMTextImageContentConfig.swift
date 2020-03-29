@@ -1,22 +1,18 @@
 //
-//  WMTextContentConfig.swift
+//  WMTextImageContentConfig.swift
 //  WechatMoments
 //
-//  Created by 王宾宾 on 2020/3/28.
+//  Created by 王宾宾 on 2020/3/29.
 //  Copyright © 2020 王宾宾. All rights reserved.
 //
 
 import UIKit
 import M80AttributedLabel
 
-class WMTextContentConfig: WMCellContentConfigProtocol {
+class WMTextImageContentConfig: WMCellContentConfigProtocol {
     
     
     private let label = M80AttributedLabel()
-    
-    func contentInset(model: WMTweetModel) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 40, left: 74, bottom: 40, right: 20)
-    }
     
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         /// 计算文本size
@@ -24,17 +20,23 @@ class WMTextContentConfig: WMCellContentConfigProtocol {
         let edges = contentInset(model: model)
         let labelWidth = width - edges.left - edges.right
         if let content = model.content {
-            
-//            label.font = WMConfig.shared.textFont!
+            //            label.font = WMConfig.shared.textFont!
             label.text = content
             height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         }
-        return CGSize(width: labelWidth, height: height)
+        /// 图片高度
+        var imageHeight: CGFloat = 200
+        if let images = model.images {
+            if images.count >= 1 {
+                let lines = (images.count - 1) / 3 + 1
+                imageHeight = CGFloat(lines) * (WMConfig.shared.multipleImageWH + 10)
+            }
+        }
+        return CGSize(width: labelWidth, height: height + imageHeight)
     }
     
     func cellClass(model: WMTweetModel) -> String {
-        return "WMTweetTextContentView"
+        return "\(WMTweetTextImageContentView.self)"
     }
     
-
 }

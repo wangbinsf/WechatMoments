@@ -20,7 +20,7 @@ class WMTweetCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        backgroundColor = .lightGray
+        selectionStyle = .none
         configureUI()
         configureComponents()
     }
@@ -67,15 +67,18 @@ class WMTweetCell: UITableViewCell {
     /// 控件赋值
     func refresh() {
         addContentView()
+        layoutCustomContentView()
         nickLabel.text = model?.sender?.nick
-        avatarImageView.image = #imageLiteral(resourceName: "avatar_user")
         if let model = model {
+            avatarImageView.setAvatar(model.sender!.avatar)
             customContentView?.refresh(data: model)
         }
-        setNeedsLayout()
     }
 
     func addContentView() {
+        guard customContentView == nil else {
+            return
+        }
         let config = WMConfig.shared.layoutConfig
         guard let model = model else {
             assert(false)
@@ -96,7 +99,7 @@ class WMTweetCell: UITableViewCell {
         let content = typeClass.init()
         customContentView = content
         contentView.addSubview(content)
-        layoutCustomContentView()
+        
     }
     
     func layoutCustomContentView() {

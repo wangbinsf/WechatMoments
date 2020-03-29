@@ -27,22 +27,5 @@ class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
 
 }
 
-class WMCellContentConfigFactory {
-    private init() {
-        dict = [ContentType.text: WMTextContentConfig()]
-    }
-    private var dict: [ContentType: WMCellContentConfigProtocol] = [:]
-    static let shared = WMCellContentConfigFactory()
-    
-    func configBy(model: WMTweetModel) -> WMCellContentConfigProtocol {
-        let type = model.contentType
-        let config = dict[type]
-        /// 待完善
-        if config == nil {
-            assert(false)
-        }
-        return config!
-    }
-}
 
 

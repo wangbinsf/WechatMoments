@@ -16,7 +16,8 @@ enum AvatarStyle {
 }
 
 enum ContentType {
-    case image
+    case singleImage
+    case mutipleImage
     case text
     case text_image
     case unknowType
@@ -37,6 +38,7 @@ struct WMConfig {
     var nickColor: UIColor?
     var textFont: UIFont?
     var textColor: UIColor?
+    var multipleImageWH: CGFloat = 0
     
     mutating func applyDefaultConfig() {
         avatarStyle = .radiusCorner
@@ -45,5 +47,7 @@ struct WMConfig {
         
         textFont = UIFont.systemFont(ofSize: 18.0)
         textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+        
+        multipleImageWH = 80
     }
 }

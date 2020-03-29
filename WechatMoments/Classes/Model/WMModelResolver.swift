@@ -25,12 +25,15 @@ struct WMModelResolver {
         var legalData: [WMTweetModel] = []
         /// 简单的for循环只需要O(n)
         for tweet in tweets {
-            if tweet.error != nil || tweet.unknownError != nil {
+            var tweet = tweet
+            
+            if tweet.error != nil || tweet.unknownError != nil || !addContentTypeProperty(&tweet) {
                 illegalData.append(tweet)
             } else {
                 legalData.append(tweet)
             }
         }
+       
         /// 异步IO
         DispatchQueue.global().async {
             WMFileManager.saveErrorData(illegalData)
@@ -39,6 +42,39 @@ struct WMModelResolver {
     }
     
     
-    
+    func addContentTypeProperty(_ tweet: inout WMTweetModel) -> Bool {
+        
+        /// 纯文本、单张图片、多张图片、文本加图
+        if tweet.content != nil {
+            /// 存在文本内容
+            if tweet.images == nil {
+                /// 图片为空
+                tweet.contentType = .text
+            } else {
+                /// 图片不为空
+                if tweet.images!.count > 0{
+                    tweet.contentType = .text_image
+                } else {
+                    tweet.contentType = .text
+                }
+            }
+        } else {
+            /// 不存在文本
+            if tweet.images == nil {
+                /// 图片为空
+                return false
+            } else {
+                /// 图片不为空
+                if tweet.images!.count == 1 {
+                    tweet.contentType = .singleImage
+                } else if tweet.images!.count > 1 {
+                    tweet.contentType = .mutipleImage
+                } else {
+                    return false
+                }
+            }
+        }
+        return true
+    }
     
 }
