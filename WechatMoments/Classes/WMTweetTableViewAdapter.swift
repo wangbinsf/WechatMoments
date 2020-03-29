@@ -24,10 +24,14 @@ extension WMTweetTableViewAdapter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let tweet = tweets[indexPath.row]
+        /// 内容高度
         let layoutConfig = WMConfig.shared.layoutConfig
         let contentTop = layoutConfig.contentInset(model: tweet).top
         let contentSize = layoutConfig.contentSize(model: tweet, width: tableView.frame.width)
-        return contentTop + contentSize.height + 10
+        
+        /// 评论高度
+        let commentsSize = layoutConfig.commentsSize(model: tweet, width: tableView.frame.width).height
+        return contentTop + contentSize.height + 10 + commentsSize
     }
 }
 
@@ -40,20 +44,8 @@ extension WMTweetTableViewAdapter: UITableViewDataSource {
         let tweet = tweets[indexPath.row]
         let config = WMConfig.shared.layoutConfig
         let reuseIdentifier = config.cellClass(model: tweet)
-//        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-//        if cell == nil {
-//            tableView.register(WMTweetCell.self, forCellReuseIdentifier: reuseIdentifier)
-//            cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-//            if let tweetCell = cell as? WMTweetCell {
-//                tweetCell.refreshData(tweet)
-//                cell = tweetCell
-//            }
-//        }
-        
-//        let reuseIdentifier = "\(WMTweetCell.self)"
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! WMTweetCell
         cell.refreshData(tweet)
-        print("cell===\(cell)")
         return cell
     }
     

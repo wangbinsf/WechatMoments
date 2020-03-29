@@ -142,6 +142,14 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
+		C33604AF2430D86C00FC8B31 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		C345B0C7242EE45200B7A7EC = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +191,7 @@
 		C345B107242EF55900B7A7EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C33604AF2430D86C00FC8B31 /* Controller */,
 				C33604A224304C9500FC8B31 /* Global */,
 				C3F50EEA242FA61700AC24F8 /* Contents */,
 				C3F50EE7242FA35B00AC24F8 /* Config */,
@@ -193,7 +202,6 @@
 				C345B109242EF73D00B7A7EC /* Model */,
 				C345B0D3242EE45200B7A7EC /* AppDelegate.swift */,
 				C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */,
-				C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */,
 				C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */,
 			);
 			path = Classes;

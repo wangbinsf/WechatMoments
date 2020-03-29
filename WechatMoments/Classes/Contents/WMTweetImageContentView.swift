@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import SDWebImage
 class WMTweetImageContentView: WMTweetContentView {
     
@@ -26,7 +27,6 @@ class WMTweetImageContentView: WMTweetContentView {
     }
     
     func setUI() {
-//        backgroundColor = .green
         singleImageView.contentMode = .scaleAspectFit
         addSubview(singleImageView)
         singleImageView.snp.makeConstraints { (make) in
@@ -60,13 +60,6 @@ class WMTweetImageContentView: WMTweetContentView {
             let scale = image.size.width / image.size.height
             let maxHeight: CGFloat = 200
             let maxWidth = maxHeight * scale
-//            if image.size.height > image.size.width {
-//                maxWidth = maxHeight * scale
-//            } else {
-//                maxWidth = 200
-//                maxHeight = maxWidth / scale
-//            }
-
             self.singleImageView.snp.updateConstraints { (make) in
                 make.size.equalTo(CGSize(width: maxWidth, height: maxHeight))
             }

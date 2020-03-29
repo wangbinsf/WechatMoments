@@ -18,6 +18,4 @@ class WMCommentsView: UIView {
         super.init(coder: coder)
     }
     
-    
-
 }

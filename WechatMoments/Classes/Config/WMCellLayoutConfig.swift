@@ -24,6 +24,11 @@ class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
         return config.cellClass(model: model)
     }
     
+    func commentsSize(model: WMTweetModel, width: CGFloat) -> CGSize {
+        let factory = WMCellContentConfigFactory.shared
+        let config = factory.configBy(model: model)
+        return config.commentsSize(model: model, width: width)
+    }
 
 }
 

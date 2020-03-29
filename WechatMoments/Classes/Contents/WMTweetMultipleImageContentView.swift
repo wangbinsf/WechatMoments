@@ -37,17 +37,10 @@ class WMTweetMultipleImageContentView: WMTweetContentView {
         if images.count >= 1 {
             showMultipleImages(images.map { $0.url })
         }
-        setNeedsLayout()
     }
-    var imageViews: [UIImageView] = []
     
     /// 多张图片
     func showMultipleImages(_ images: [String]) {
-//        for subview in imageViews {
-//            subview.removeFromSuperview()
-//        }
-//        imageViews.removeAll()
-//        subviews.forEach { $0.removeFromSuperview() }
         
         var leading: CGFloat = 0
         var top: CGFloat = 0
@@ -56,11 +49,12 @@ class WMTweetMultipleImageContentView: WMTweetContentView {
         
         for (index, imgName) in images.enumerated() {
             let imageView = UIImageView()
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
             imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             addSubview(imageView)
             leading = CGFloat(index % 3) * (imageViewWH + imageMargin)
             top = CGFloat(index / 3) * (imageViewWH + imageMargin)
-            imageViews.append(imageView)
             imageView.snp.makeConstraints { (make) in
                 make.leading.equalToSuperview().offset(leading)
                 make.top.equalToSuperview().offset(top)

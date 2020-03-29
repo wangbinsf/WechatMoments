@@ -27,7 +27,7 @@ class WMTextImageContentConfig: WMCellContentConfigProtocol {
         /// 图片高度
         var imageHeight: CGFloat = 200
         if let images = model.images {
-            if images.count >= 1 {
+            if images.count > 1 {
                 let lines = (images.count - 1) / 3 + 1
                 imageHeight = CGFloat(lines) * (WMConfig.shared.multipleImageWH + 10)
             }

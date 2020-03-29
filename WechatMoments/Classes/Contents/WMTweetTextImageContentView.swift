@@ -7,57 +7,85 @@
 //
 
 import UIKit
+import M80AttributedLabel
 
 class WMTweetTextImageContentView: WMTweetContentView {
     
-    let textContent = WMTweetTextContentView()
-    var imageContent: WMTweetContentView!
+    var textContent: WMTweetTextContentView?
+    var imageContent: WMTweetContentView?
+    
+    var imageHeight: CGFloat = 0
+    
+    
+    private let label = M80AttributedLabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addTextContent()
+//        addTextContent()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        addTextContent()
+//        addTextContent()
     }
     
     func addTextContent() {
         /// 显示文本
-        addSubview(textContent)
-        textContent.snp.makeConstraints { (make) in
-            make.leading.top.trailing.equalToSuperview()
-        }
+//        var height: CGFloat = 0
+//        let labelWidth = width - edges.left - edges.right
+//        if let content = model.content {
+            //            label.font = WMConfig.shared.textFont!
+//            label.text = content
+//            height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
+//        }
+        
     }
     
-    func setImageContent() {
+    func addContent() {
+        label.text = tweet!.content!
+        let height = label.sizeThatFits(CGSize(width: 320, height: CGFloat.greatestFiniteMagnitude))
+        addSubview(textContent!)
+        textContent!.snp.makeConstraints { (make) in
+            make.leading.top.trailing.equalToSuperview()
+            make.height.equalTo(height)
+        }
         /// 显示图片
-        addSubview(imageContent)
-        imageContent.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(textContent.snp_bottom)
+        addSubview(imageContent!)
+        
+        imageContent!.snp.makeConstraints { (make) in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(textContent!.snp_bottom)
+            make.height.equalTo(imageHeight)
+            make.bottom.equalToSuperview()
         }
     }
     
     override func refresh(data: WMTweetModel) {
         super.refresh(data: data)
-        
         guard let images = data.images, images.count > 0 else {
             assert(false)
             return
         }
         
         if imageContent != nil {
-            imageContent.removeFromSuperview()
+            imageContent?.removeFromSuperview()
+        }
+        if textContent != nil {
+            textContent?.removeFromSuperview()
         }
         
+        textContent = WMTweetTextContentView()
         if images.count == 1 {
             imageContent = WMTweetImageContentView()
+            imageHeight = 200
         } else if images.count > 1 {
             imageContent = WMTweetMultipleImageContentView()
+            let config = WMMultipleImageContentConfig()
+            let size = config.contentSize(model: data, width: frame.width)
+            imageHeight = size.height
         }
-        setImageContent()
-        textContent.refresh(data: data)
-        imageContent.refresh(data: data)
+        addContent()
+        textContent!.refresh(data: data)
+        imageContent!.refresh(data: data)
     }
 }

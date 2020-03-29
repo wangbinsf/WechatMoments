@@ -60,8 +60,6 @@ class WMTweetsListViewController: UIViewController {
         tableView.estimatedRowHeight = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-//        tableView.delegate = self
-//        tableView.dataSource = self
         tableView.tableFooterView = UIView()
         view.addSubview(tableView)
         tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextContentView.self)")

@@ -11,12 +11,11 @@ import M80AttributedLabel
 
 class WMTextContentConfig: WMCellContentConfigProtocol {
     
+
     
     private let label = M80AttributedLabel()
     
-    func contentInset(model: WMTweetModel) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 40, left: 74, bottom: 40, right: 20)
-    }
+
     
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         /// 计算文本size
@@ -24,8 +23,6 @@ class WMTextContentConfig: WMCellContentConfigProtocol {
         let edges = contentInset(model: model)
         let labelWidth = width - edges.left - edges.right
         if let content = model.content {
-            
-//            label.font = WMConfig.shared.textFont!
             label.text = content
             height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         }

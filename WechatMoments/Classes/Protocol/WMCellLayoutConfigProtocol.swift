@@ -19,5 +19,7 @@ protocol WMCellLayoutConfigProtocol {
 
     /// 需要的构造cellContent的类名
     func cellClass(model: WMTweetModel) -> String
-    
+    /// 评论的高度
+    func commentsSize(model: WMTweetModel, width: CGFloat) -> CGSize
 }
+
