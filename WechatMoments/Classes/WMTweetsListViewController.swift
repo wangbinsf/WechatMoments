@@ -13,14 +13,21 @@ class WMTweetsListViewController: UIViewController {
 
     lazy var naviBar = WMCustomNavBar()
     var tableView: UITableView!
-    var tweets: [WMTweetModel] = []
+    var tweets: [WMTweetModel] = [] {
+        didSet {
+            tableAdapter.tweets = tweets
+        }
+    }
     var dataProvier: WMDataProvider!
+    var tableAdapter = WMTweetTableViewAdapter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         /// table
         configureTableView()
+        /// table相关配置
+        setupTableAdapter()
         /// 导航栏
         configureNaviBar()
         /// 数据源
@@ -38,38 +45,35 @@ class WMTweetsListViewController: UIViewController {
     
     private func configureNaviBar() {
         view.addSubview(naviBar)
-        naviBar.title = "朋友圈"
-        naviBar.snp.makeConstraints { (make) in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(44 + 44)
-        }
+//        naviBar.title = "朋友圈"
+//        naviBar.snp.makeConstraints { (make) in
+//            make.top.leading.trailing.equalToSuperview()
+//            make.height.equalTo(44 + 44)
+//        }
     }
     
     
     private func configureTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.estimatedRowHeight = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         view.addSubview(tableView)
-        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "WMTweetCell")
+        tableView.register(WMTweetCell.self, forCellReuseIdentifier: "WMTweetTextContentView")
+    }
+    
+    private func setupTableAdapter() {
+        
+        tableView.delegate = tableAdapter
+        tableView.dataSource = tableAdapter
     }
     
 }
 
-extension WMTweetsListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tweets.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WMTweetCell", for: indexPath) as! WMTweetCell
-        let model = tweets[indexPath.row]
-        cell.refreshData(model)
-        return cell
-    }
-}
+
 

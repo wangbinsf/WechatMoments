@@ -1,16 +1,31 @@
 PODS:
+  - M80AttributedLabel (1.6.3)
+  - MJRefresh (3.1.15.3)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - M80AttributedLabel
+  - MJRefresh
+  - SDWebImage
   - SnapKit (= 4.2.0)
 
 SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - M80AttributedLabel
+    - MJRefresh
+    - SDWebImage
   trunk:
     - SnapKit
 
 SPEC CHECKSUMS:
+  M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: b33dea3936b7efc30c9fd991aeb543f413296f81
+PODFILE CHECKSUM: d2e64e581cda00d0e38b89406c7bc436be3aa10a
 
 COCOAPODS: 1.8.4

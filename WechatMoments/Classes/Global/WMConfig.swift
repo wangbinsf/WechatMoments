@@ -28,17 +28,22 @@ struct WMConfig {
         layoutConfig = WMCellLayoutConfig()
     }
     
-    static let shared = WMConfig()
+    static var shared = WMConfig()
     
     var layoutConfig: WMCellLayoutConfigProtocol
     
     var avatarStyle: AvatarStyle?
     var nickFont: UIFont?
     var nickColor: UIColor?
+    var textFont: UIFont?
+    var textColor: UIColor?
     
-    private mutating func defaultConfig() {
-        avatarStyle = .normal
-        nickFont = UIFont.systemFont(ofSize: 15.0)
-        nickColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    mutating func applyDefaultConfig() {
+        avatarStyle = .radiusCorner
+        nickFont = UIFont.boldSystemFont(ofSize: 18.0)
+        nickColor = #colorLiteral(red: 0.3411764706, green: 0.4196078431, blue: 0.5803921569, alpha: 1)
+        
+        textFont = UIFont.systemFont(ofSize: 18.0)
+        textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     }
 }

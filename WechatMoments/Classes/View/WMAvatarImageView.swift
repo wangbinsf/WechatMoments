@@ -20,6 +20,7 @@ class WMAvatarImageView: UIControl {
                 return
             }
             originalImage = addCorner(radius: cornerRadius, for: newValue)
+            imageView.image = originalImage
         }
         get {
             return originalImage ?? UIImage(named: "placeholderAvatar")!
@@ -40,6 +41,9 @@ class WMAvatarImageView: UIControl {
     private func setup() {
         imageView.contentMode = .scaleAspectFill
         addSubview(imageView)
+        imageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         setRadius()
     }
     

@@ -20,6 +20,7 @@ class WMTweetCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        backgroundColor = .lightGray
         configureUI()
         configureComponents()
     }
@@ -30,24 +31,27 @@ class WMTweetCell: UITableViewCell {
     
     func configureComponents() {
         /// avatar
+        avatarImageView.frame = CGRect(x: 20, y: 15, width: 44, height: 44)
         contentView.addSubview(avatarImageView)
-        avatarImageView.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(15)
-            make.top.equalToSuperview().offset(20)
-            make.size.equalTo(CGSize(width: 44, height: 44))
-        }
+//        avatarImageView.backgroundColor = .gray
         
         /// nick name
         contentView.addSubview(nickLabel)
+//        nickLabel.backgroundColor = 
         nickLabel.isOpaque = true
-        nickLabel.backgroundColor = .clear
+//        nickLabel.backgroundColor = .clear
         nickLabel.font = WMConfig.shared.nickFont
         nickLabel.textColor = WMConfig.shared.nickColor
+        nickLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(avatarImageView.snp_trailing).offset(10)
+            make.top.equalTo(avatarImageView)
+            make.trailing.greaterThanOrEqualToSuperview().offset(-10)
+//            make.height.equalTo(25)
+        }
         
         /// content view
         /// 可自行扩展
         /// comments
-        
     }
     
     func configureUI() {
@@ -64,7 +68,11 @@ class WMTweetCell: UITableViewCell {
     func refresh() {
         addContentView()
         nickLabel.text = model?.sender?.nick
-//        avatarImageView.image =
+        avatarImageView.image = #imageLiteral(resourceName: "avatar_user")
+        if let model = model {
+            customContentView?.refresh(data: model)
+        }
+        setNeedsLayout()
     }
 
     func addContentView() {
@@ -96,10 +104,14 @@ class WMTweetCell: UITableViewCell {
             assert(false, "model不存在")
             return
         }
-//        let origin = WMConfig.shared.layoutConfig.contentOrigin(model: model)
-//        let size = WMConfig.shared.
-//        customContentView?.snp.makeConstraints({ (make) in
-//            make.edges.equalTo(edgeInsets)
-//        })
+        let config = WMConfig.shared.layoutConfig
+        let edges = config.contentInset(model: model)
+        let size = config.contentSize(model: model, width: frame.size.width)
+        /// 此处可以添加强制使用自定义origin，强制字段
+        customContentView?.snp.makeConstraints({ (make) in
+            make.leading.equalTo(edges.left)
+            make.top.equalTo(edges.top)
+            make.size.equalTo(size)
+        })
     }
 }

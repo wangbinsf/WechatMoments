@@ -9,8 +9,9 @@
 import UIKit
 
 class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
-    func contentOrigin(model: WMTweetModel) -> CGPoint {
-        return WMCellContentConfigFactory.shared.configBy(model: model).contentOrigin(model: model)
+    
+    func contentInset(model: WMTweetModel) -> UIEdgeInsets {
+        return WMCellContentConfigFactory.shared.configBy(model: model).contentInset(model: model)
     }
     
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {

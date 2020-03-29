@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import M80AttributedLabel
 
 class WMTweetTextContentView: WMTweetContentView {
     
-    lazy var textLabel = UILabel()
+    lazy var textLabel = M80AttributedLabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,13 +24,18 @@ class WMTweetTextContentView: WMTweetContentView {
     }
     
     func setUI() {
-        
-        textLabel.text = "这是测试数据"
+        backgroundColor = .green
+        textLabel.font = UIFont.systemFont(ofSize: 16)
+        textLabel.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         addSubview(textLabel)
+        
+        textLabel.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     override func refresh(data: WMTweetModel) {
-//        textLabel.text = data.content
+        textLabel.text = data.content
     }
 
 }

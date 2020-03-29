@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */; };
 		C345B0D4242EE45200B7A7EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0D3242EE45200B7A7EC /* AppDelegate.swift */; };
 		C345B0D6242EE45200B7A7EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */; };
 		C345B0DB242EE45200B7A7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C345B0D9242EE45200B7A7EC /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		6E09B2921E7EDDA6DBD33F72 /* Pods_WechatMoments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WechatMoments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3D9E274724B3925F73C0F6 /* Pods-WechatMoments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WechatMoments.debug.xcconfig"; path = "Target Support Files/Pods-WechatMoments/Pods-WechatMoments.debug.xcconfig"; sourceTree = "<group>"; };
 		B4A47CA3426B4FE3E1786EC0 /* Pods-WechatMoments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WechatMoments.release.xcconfig"; path = "Target Support Files/Pods-WechatMoments/Pods-WechatMoments.release.xcconfig"; sourceTree = "<group>"; };
+		C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetTableViewAdapter.swift; sourceTree = "<group>"; };
 		C345B0D0242EE45200B7A7EC /* WechatMoments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WechatMoments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C345B0D3242EE45200B7A7EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C33604A124304C2600FC8B31 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				C3F50EEB242FA63700AC24F8 /* WMTextContentConfig.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		C33604A224304C9500FC8B31 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */,
+				C345B10E242F288500B7A7EC /* WMFileManager.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		C345B0C7242EE45200B7A7EC = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +168,7 @@
 		C345B107242EF55900B7A7EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C33604A224304C9500FC8B31 /* Global */,
 				C3F50EEA242FA61700AC24F8 /* Contents */,
 				C3F50EE7242FA35B00AC24F8 /* Config */,
 				C3F50EE0242F997600AC24F8 /* Protocol */,
@@ -158,9 +178,8 @@
 				C345B109242EF73D00B7A7EC /* Model */,
 				C345B0D3242EE45200B7A7EC /* AppDelegate.swift */,
 				C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */,
-				C345B10E242F288500B7A7EC /* WMFileManager.swift */,
 				C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */,
-				C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */,
+				C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -193,8 +212,6 @@
 				C345B0FE242EEDB300B7A7EC /* WMCustomNavBar.swift */,
 				C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */,
 				C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */,
-				C3F50EE3242F9DC700AC24F8 /* WMTweetContentView.swift */,
-				C3F50EED242FA84A00AC24F8 /* WMTweetTextContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +244,7 @@
 		C3F50EE7242FA35B00AC24F8 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				C33604A124304C2600FC8B31 /* Content */,
 				C3F50EE5242FA11F00AC24F8 /* WMCellLayoutConfig.swift */,
 			);
 			path = Config;
@@ -235,7 +253,8 @@
 		C3F50EEA242FA61700AC24F8 /* Contents */ = {
 			isa = PBXGroup;
 			children = (
-				C3F50EEB242FA63700AC24F8 /* WMTextContentConfig.swift */,
+				C3F50EE3242F9DC700AC24F8 /* WMTweetContentView.swift */,
+				C3F50EED242FA84A00AC24F8 /* WMTweetTextContentView.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -405,6 +424,7 @@
 				C3F50EE4242F9DC700AC24F8 /* WMTweetContentView.swift in Sources */,
 				C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */,
 				C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */,
+				C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */,
 				C345B0FF242EEDB300B7A7EC /* WMCustomNavBar.swift in Sources */,
 				C345B0D4242EE45200B7A7EC /* AppDelegate.swift in Sources */,
 				C3F50EE2242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift in Sources */,
