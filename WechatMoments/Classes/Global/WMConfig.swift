@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+/// 计算高度的地方可以抽取出来
 
 enum AvatarStyle {
     case normal

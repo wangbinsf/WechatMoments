@@ -8,9 +8,14 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
 
 class WMTweetsListViewController: UIViewController {
 
+    /// 当前页，从0开始
+    var currentPage = 0
+    private let pageNum = 5
+    
     lazy var naviBar = WMCustomNavBar()
     var tableView: UITableView!
     var tweets: [WMTweetModel] = [] {
@@ -18,8 +23,8 @@ class WMTweetsListViewController: UIViewController {
             tableAdapter.tweets = tweets
         }
     }
-    var dataProvier: WMDataProvider!
-    var tableAdapter = WMTweetTableViewAdapter()
+    private var dataProvier = WMBundleDataProvider()
+    private var tableAdapter = WMTweetTableViewAdapter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,16 +35,27 @@ class WMTweetsListViewController: UIViewController {
         setupTableAdapter()
         /// 导航栏
         configureNaviBar()
-        /// 数据源
-        configureDataProvider()
+        fetchTweets(ofPage: 0)
     }
     
-    private func configureDataProvider() {
-        
-        dataProvier = WMBundleDataProvider()
-        dataProvier.requestTweets { [weak self] (tweets) in
-            self?.tweets = tweets
-            self?.tableView.reloadData()
+    private func fetchTweets(ofPage: Int) {
+        dataProvier.requestTweets(currentPage: currentPage, pageNum: pageNum) { [weak self] tweets in
+            guard let self = self else { return }
+            if self.currentPage == 0 {
+                self.tweets = tweets
+                self.tableView.mj_footer.resetNoMoreData()
+                self.tableView.mj_header.endRefreshing()
+                
+            } else {
+                self.tweets.append(contentsOf: tweets)
+                if tweets.count < self.pageNum {
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                } else {
+                    self.tableView.mj_footer.endRefreshing()
+                }
+            }
+            
+            self.tableView.reloadData()
         }
     }
     
@@ -66,6 +82,19 @@ class WMTweetsListViewController: UIViewController {
         tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetImageContentView.self)")
         tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetMultipleImageContentView.self)")
         tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextImageContentView.self)")
+        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            [weak self] in
+            guard let self = self else { return }
+            self.currentPage = 0
+            self.fetchTweets(ofPage: self.currentPage)
+        })
+        
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
+            guard let self = self else { return }
+            self.currentPage += 1
+            self.fetchTweets(ofPage: self.currentPage)
+        })
     }
     
     private func setupTableAdapter() {

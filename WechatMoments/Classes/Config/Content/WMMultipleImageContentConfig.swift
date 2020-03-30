@@ -13,7 +13,7 @@ class WMMultipleImageContentConfig: WMCellContentConfigProtocol {
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         let edges = contentInset(model: model)
         let contentWidth = width - edges.left - edges.right
-        var height: CGFloat = 80
+        var height: CGFloat = 200
         if let images = model.images {
             guard images.count > 1 else {
                 assert(false, "图片不存在")

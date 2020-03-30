@@ -27,7 +27,9 @@ class WMTweetImageContentView: WMTweetContentView {
     }
     
     func setUI() {
+        clipsToBounds = true
         singleImageView.contentMode = .scaleAspectFit
+        singleImageView.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
         addSubview(singleImageView)
         singleImageView.snp.makeConstraints { (make) in
             make.leading.top.equalToSuperview()
@@ -56,6 +58,7 @@ class WMTweetImageContentView: WMTweetContentView {
             print(a, b)
         }) { (image, error, cache, url) in
             /// 下载完成，计算显示布局
+            /// 已经是主线程
             guard let image = image else { return }
             let scale = image.size.width / image.size.height
             let maxHeight: CGFloat = 200

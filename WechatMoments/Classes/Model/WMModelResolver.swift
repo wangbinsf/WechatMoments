@@ -26,11 +26,10 @@ struct WMModelResolver {
         /// 简单的for循环只需要O(n)
         for tweet in tweets {
             var tweet = tweet
-            
-            if tweet.error != nil || tweet.unknownError != nil || !addContentTypeProperty(&tweet) {
-                illegalData.append(tweet)
-            } else {
+            if processingSourceData(&tweet) {
                 legalData.append(tweet)
+            } else {
+                illegalData.append(tweet)
             }
         }
        
@@ -41,8 +40,18 @@ struct WMModelResolver {
         return legalData
     }
     
-    
-    func addContentTypeProperty(_ tweet: inout WMTweetModel) -> Bool {
+    /// 数据验证
+    func processingSourceData(_ tweet: inout WMTweetModel) -> Bool {
+        
+        /// 错误消息
+        if tweet.error != nil || tweet.unknownError != nil {
+            return false
+        }
+        
+        /// 发送人为空，删除消息
+        guard tweet.sender != nil else {
+            return false
+        }
         
         /// 纯文本、单张图片、多张图片、文本加图
         if tweet.content != nil {

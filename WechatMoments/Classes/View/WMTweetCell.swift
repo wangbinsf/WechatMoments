@@ -26,9 +26,12 @@ class WMTweetCell: UITableViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        selectionStyle = .none
+        configureComponents()
     }
     
+    /// 配置默认控件
     func configureComponents() {
         /// avatar
         avatarImageView.frame = CGRect(x: 20, y: 15, width: 44, height: 44)
@@ -46,6 +49,7 @@ class WMTweetCell: UITableViewCell {
             make.trailing.greaterThanOrEqualToSuperview().offset(-10)
         }
         
+        /// cell分割线
         let cuttingLine = UIView()
         cuttingLine.backgroundColor = #colorLiteral(red: 0.968627451, green: 0.9725490196, blue: 0.9764705882, alpha: 1)
         addSubview(cuttingLine)
@@ -54,9 +58,9 @@ class WMTweetCell: UITableViewCell {
             make.height.equalTo(1)
         }
         
-        /// comments
     }
     
+    /// 数据刷新
     func refreshData(_ model: WMTweetModel) {
         self.model = model
         refresh()
@@ -65,40 +69,28 @@ class WMTweetCell: UITableViewCell {
     /// 控件赋值
     func refresh() {
         addContentView()
-        layoutCustomContentView()
-        
+        guard let model = model else {
+            assert(false, "非法数据")
+            return
+        }
         /// 添加评论视图
-        if let model = model, let comments = model.comments, comments.count > 0 {
+        if let comments = model.comments, comments.count > 0 {
             addCommentsView()
+        } else {
+            /// 移除评论视图
+            commentsContentView?.removeFromSuperview()
         }
-        
-        nickLabel.text = model?.sender?.nick
-        if let model = model {
-            avatarImageView.setAvatar(model.sender!.avatar)
-            customContentView?.refresh(data: model)
+        if let sender = model.sender {
+            nickLabel.text = sender.nick
+            avatarImageView.setAvatar(sender.avatar)
         }
-    }
-
-    /// 添加评论视图
-    func addCommentsView() {
-        commentsContentView?.removeFromSuperview()
-        commentsContentView = WMCommentsView()
-        commentsContentView!.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-        
-        contentView.addSubview(commentsContentView!)
-        let config = WMConfig.shared.layoutConfig
-        let commentsSize = config.commentsSize(model: model, width: frame.width)
-        commentsContentView!.snp.makeConstraints { (make) in
-            make.leading.equalTo(nickLabel)
-            make.top.equalTo(customContentView.snp_bottom)
-            make.trailing.equalTo(customContentView)
-            make.height.equalTo(commentsSize.height)
-        }
+        customContentView?.refresh(data: model)
     }
 
     func addContentView() {
-        guard customContentView == nil else {
-            return
+        if customContentView != nil {
+            customContentView.removeFromSuperview()
+            customContentView = nil
         }
         let config = WMConfig.shared.layoutConfig
         guard let model = model else {
@@ -120,7 +112,7 @@ class WMTweetCell: UITableViewCell {
         let content = typeClass.init()
         customContentView = content
         contentView.addSubview(content)
-        
+        layoutCustomContentView()
     }
     
     func layoutCustomContentView() {
@@ -138,6 +130,22 @@ class WMTweetCell: UITableViewCell {
             make.trailing.equalTo(-edges.right)
             make.height.equalTo(size.height)
         })
-//        setNeedsLayout()
+    }
+    
+    /// 添加评论视图
+    func addCommentsView() {
+        commentsContentView?.removeFromSuperview()
+        commentsContentView = WMCommentsView()
+        commentsContentView?.refreshData(comments: model.comments!)
+        commentsContentView!.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        commentsContentView?.layer.cornerRadius = 5
+        
+        
+        contentView.addSubview(commentsContentView!)
+        commentsContentView!.snp.makeConstraints { (make) in
+            make.leading.equalTo(nickLabel)
+            make.top.equalTo(customContentView.snp_bottom)
+            make.trailing.equalTo(customContentView)
+        }
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class WMTweetTableViewAdapter: NSObject {
     var tweets: [WMTweetModel] = []
+    /// 缓存高度
+    var cellHeights: [IndexPath: CGFloat] = [:]
     override init() {
         super.init()
         
@@ -23,6 +25,10 @@ extension WMTweetTableViewAdapter: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellH = cellHeights[indexPath]
+//        if let height = cellH {
+//            return height
+//        }
         let tweet = tweets[indexPath.row]
         /// 内容高度
         let layoutConfig = WMConfig.shared.layoutConfig
@@ -31,7 +37,9 @@ extension WMTweetTableViewAdapter: UITableViewDelegate {
         
         /// 评论高度
         let commentsSize = layoutConfig.commentsSize(model: tweet, width: tableView.frame.width).height
-        return contentTop + contentSize.height + 10 + commentsSize
+        let height = contentTop + contentSize.height + 10 + commentsSize
+        cellHeights[indexPath] = height
+        return height
     }
 }
 

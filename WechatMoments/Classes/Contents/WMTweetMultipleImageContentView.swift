@@ -11,21 +11,6 @@ import UIKit
 class WMTweetMultipleImageContentView: WMTweetContentView {
     /// 当前视图只绘制图片数量 > 1的情况
     
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setUI()
-    }
-    
-    func setUI() {
-
-    }
-    
     /// 根据model显示图片
     ///
     override func refresh(data: WMTweetModel) {
@@ -51,7 +36,7 @@ class WMTweetMultipleImageContentView: WMTweetContentView {
             let imageView = UIImageView()
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
-            imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            imageView.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
             addSubview(imageView)
             leading = CGFloat(index % 3) * (imageViewWH + imageMargin)
             top = CGFloat(index / 3) * (imageViewWH + imageMargin)
