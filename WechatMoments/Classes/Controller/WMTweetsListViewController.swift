@@ -54,7 +54,7 @@ class WMTweetsListViewController: UIViewController {
     private func configureTableView() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        tableView.backgroundColor = .white
         tableView.estimatedRowHeight = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
@@ -67,18 +67,23 @@ class WMTweetsListViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        let header = MJRefreshNormalHeader(refreshingBlock: {
             [weak self] in
             guard let self = self else { return }
             self.currentPage = 0
             self.fetchTweets(ofPage: self.currentPage)
         })
+        header?.ignoredScrollViewContentInsetTop = -20
+        tableView.mj_header = header
         
-        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
+        let footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             self.currentPage += 1
             self.fetchTweets(ofPage: self.currentPage)
         })
+        footer?.setTitle("我是有底线的", for: .noMoreData)
+        tableView.mj_footer = footer
+        
     }
     
     private func setupTableAdapter() {
@@ -95,7 +100,6 @@ class WMTweetsListViewController: UIViewController {
                 self.tweets = tweets
                 self.tableView.mj_footer.resetNoMoreData()
                 self.tableView.mj_header.endRefreshing()
-                
             } else {
                 self.tweets.append(contentsOf: tweets)
                 if tweets.count < self.pageNum {

@@ -15,7 +15,7 @@ typealias ResponseHandle = ([WMTweetModel]) -> Void
 
 protocol WMDataProvider {
     func requestTweets(completionHandle: ResponseHandle)
-    func requestTweets(currentPage: Int, pageNum: Int, completionHandle: ResponseHandle)
+    func requestTweets(currentPage: Int, pageNum: Int, completionHandle: @escaping ResponseHandle)
 }
 
 struct WMBundleDataProvider: WMDataProvider {
@@ -36,34 +36,34 @@ struct WMBundleDataProvider: WMDataProvider {
     ///   - currentPage: 当前请求页
     ///   - pageNum: 每页数量
     ///
-    func requestTweets(currentPage: Int, pageNum: Int, completionHandle: ResponseHandle) {
-        let allTweets = loadDataFromBundle()
-        /// 一次获取所有
-        guard pageNum < allTweets.count else {
-            requestTweets(completionHandle: completionHandle)
-            return
+    func requestTweets(currentPage: Int, pageNum: Int,  completionHandle: @escaping ResponseHandle) {
+        DispatchQueue.global().async {
+            let allTweets = self.loadDataFromBundle()
+            DispatchQueue.main.async {
+                /// 一次获取所有
+                guard pageNum < allTweets.count else {
+                    self.requestTweets(completionHandle: completionHandle)
+                    return
+                }
+                let start = currentPage * pageNum
+                let end = start + pageNum
+                var result: [WMTweetModel] = []
+                if start < allTweets.count && end <= allTweets.count {
+                    result = Array(allTweets[start..<end])
+                } else {
+                    result = []
+                }
+                
+                completionHandle(result)
+            }
         }
-        /// 此处需考虑每页数据不一致情况
-//        let start = currentIndex
-//        let end = start + pageNum
-//        let result = Array(allTweets[currentIndex..<end])
-//        currentIndex = end
-        
-        let start = currentPage * pageNum
-        let end = start + pageNum
-        var result: [WMTweetModel] = []
-        if start < allTweets.count && end <= allTweets.count {
-            result = Array(allTweets[start..<end])
-        } else {
-            result = []
-        }
-        completionHandle(result)
     }
     
     private func loadDataFromBundle() -> [WMTweetModel] {
         let bundle = Bundle.main
         guard let url = bundle.url(forResource: "homework", withExtension: "json"), let data = try? Data(contentsOf: url) else { return [] }
         let result = WMModelResolver().fetchTweets(from: data)
+        sleep(UInt32(WMConfig.shared.delayTime))
         return result
     }
 }

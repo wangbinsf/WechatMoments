@@ -16,6 +16,8 @@ class WMAlbumCover: UIView {
     }
     
     lazy var imageView = UIImageView()
+    lazy var avatar = UIImageView()
+    lazy var nickLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +39,24 @@ class WMAlbumCover: UIView {
         imageView.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-50)
+        }
+        
+        avatar.backgroundColor = .blue
+        avatar.contentMode = .scaleAspectFit
+        addSubview(avatar)
+        avatar.snp.makeConstraints { (make) in
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalTo(imageView.snp_bottom).offset(20)
+            make.size.equalTo(CGSize(width: 60, height: 60))
+        }
+        
+        nickLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        nickLabel.textColor = .white
+        nickLabel.text = "Acoco"
+        addSubview(nickLabel)
+        nickLabel.snp.makeConstraints { (make) in
+            make.trailing.equalTo(avatar.snp_leading).offset(-20)
+            make.bottom.equalTo(imageView.snp_bottom).offset(-10)
         }
     }
 

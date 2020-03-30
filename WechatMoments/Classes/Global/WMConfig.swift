@@ -40,6 +40,7 @@ struct WMConfig {
     var textFont: UIFont?
     var textColor: UIColor?
     var multipleImageWH: CGFloat = 0
+    let delayTime: TimeInterval = 3
     
     mutating func applyDefaultConfig() {
         avatarStyle = .radiusCorner

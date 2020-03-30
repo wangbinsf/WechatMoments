@@ -20,8 +20,6 @@ class WMCustomNavBar: UIView {
         }
     }
     
-    
-    
     lazy var contentView = UIView()
 
     lazy var titleView: UILabel = {
@@ -38,7 +36,8 @@ class WMCustomNavBar: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        configureUI()
     }
     
     private func configureUI() {
@@ -49,6 +48,7 @@ class WMCustomNavBar: UIView {
             make.height.equalTo(44)
         }
         
+        titleView.font = UIFont.boldSystemFont(ofSize: 18.0)
         contentView.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
