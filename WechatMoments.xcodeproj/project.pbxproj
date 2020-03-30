@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31B1AF52431EB60002FE9A6 /* WMAlbumCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */; };
+		C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF62431EBA6002FE9A6 /* Constants.swift */; };
 		C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */; };
 		C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */; };
 		C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */; };
@@ -55,6 +57,8 @@
 		6E09B2921E7EDDA6DBD33F72 /* Pods_WechatMoments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WechatMoments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3D9E274724B3925F73C0F6 /* Pods-WechatMoments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WechatMoments.debug.xcconfig"; path = "Target Support Files/Pods-WechatMoments/Pods-WechatMoments.debug.xcconfig"; sourceTree = "<group>"; };
 		B4A47CA3426B4FE3E1786EC0 /* Pods-WechatMoments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WechatMoments.release.xcconfig"; path = "Target Support Files/Pods-WechatMoments/Pods-WechatMoments.release.xcconfig"; sourceTree = "<group>"; };
+		C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAlbumCover.swift; sourceTree = "<group>"; };
+		C31B1AF62431EBA6002FE9A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetTableViewAdapter.swift; sourceTree = "<group>"; };
 		C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetImageContentView.swift; sourceTree = "<group>"; };
 		C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMImageContentConfig.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			children = (
 				C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */,
 				C345B10E242F288500B7A7EC /* WMFileManager.swift */,
+				C31B1AF62431EBA6002FE9A6 /* Constants.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				C345B0FE242EEDB300B7A7EC /* WMCustomNavBar.swift */,
 				C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */,
 				C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */,
+				C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				C345B0FD242EED9000B7A7EC /* WMTweetsListViewController.swift in Sources */,
 				C3F50EEE242FA84A00AC24F8 /* WMTweetTextContentView.swift in Sources */,
 				C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */,
+				C31B1AF52431EB60002FE9A6 /* WMAlbumCover.swift in Sources */,
 				C3F50EEC242FA63700AC24F8 /* WMTextContentConfig.swift in Sources */,
 				C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */,
 				C3F50EE9242FA3C000AC24F8 /* WMCellContentConfigProtocol.swift in Sources */,
@@ -451,6 +458,7 @@
 				C3F50EE4242F9DC700AC24F8 /* WMTweetContentView.swift in Sources */,
 				C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */,
 				C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */,
+				C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */,
 				C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */,
 				C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */,
 				C33604A824307BEC00FC8B31 /* WMTweetTextImageContentView.swift in Sources */,

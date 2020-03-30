@@ -12,9 +12,16 @@ class WMTweetTableViewAdapter: NSObject {
     var tweets: [WMTweetModel] = []
     /// 缓存高度
     var cellHeights: [IndexPath: CGFloat] = [:]
-    override init() {
+    
+    weak var viewController: WMTweetsListViewController?
+    
+    init(viewController: WMTweetsListViewController) {
+        self.viewController = viewController
         super.init()
-        
+        viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextContentView.self)")
+        viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetImageContentView.self)")
+        viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetMultipleImageContentView.self)")
+        viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextImageContentView.self)")
     }
 }
 
@@ -26,9 +33,9 @@ extension WMTweetTableViewAdapter: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellH = cellHeights[indexPath]
-//        if let height = cellH {
-//            return height
-//        }
+        if let height = cellH {
+            return height
+        }
         let tweet = tweets[indexPath.row]
         /// 内容高度
         let layoutConfig = WMConfig.shared.layoutConfig
@@ -58,4 +65,24 @@ extension WMTweetTableViewAdapter: UITableViewDataSource {
     }
     
     
+}
+
+extension WMTweetTableViewAdapter: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard let navi = viewController?.naviBar else {
+            return
+        }
+        let y = scrollView.contentOffset.y
+        let navHeight = Constants.isFullScreen ? CGFloat(88) : CGFloat(64)
+        let cutting = scrollView.bounds.width - Constants.albumCoverTopInset
+        if y < cutting {
+            navi.updateUI(alpha: 0.0)
+            return
+        }
+        
+        /// 导航栏渐变
+        let ration = (y - cutting) / (navHeight / 2)
+        print("=====\(ration)")
+        navi.updateUI(alpha: ration)
+    }
 }

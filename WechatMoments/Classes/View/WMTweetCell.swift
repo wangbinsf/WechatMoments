@@ -140,7 +140,6 @@ class WMTweetCell: UITableViewCell {
         commentsContentView!.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
         commentsContentView?.layer.cornerRadius = 5
         
-        
         contentView.addSubview(commentsContentView!)
         commentsContentView!.snp.makeConstraints { (make) in
             make.leading.equalTo(nickLabel)
