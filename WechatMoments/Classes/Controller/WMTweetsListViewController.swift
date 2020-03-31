@@ -14,23 +14,20 @@ class WMTweetsListViewController: UIViewController {
 
     /// 当前页，从0开始
     var currentPage = 0
-    /// 每页条数
-    private let pageNum = 5
-    
-    lazy var naviBar = WMCustomNavBar()
     var tableView: UITableView!
+    lazy var naviBar = WMCustomNavBar()
     private var dataProvier = WMBundleDataProvider()
     private var tableAdapter: WMTweetTableViewAdapter!
     
     var tweets: [WMTweetModel] = [] {
         didSet {
             tableAdapter.tweets = tweets
+            tableAdapter.reloadData()
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         /// table
         configureTableView()
         /// table相关配置
@@ -38,7 +35,9 @@ class WMTweetsListViewController: UIViewController {
         /// 导航栏
         configureNaviBar()
         /// 请求数据
-        fetchTweets(ofPage: 0)
+        dataProvier.requestTweets { [weak self] (tweets) in
+            self?.tweets = tweets
+        }
     }
     
     /// 配置导航栏
@@ -94,7 +93,8 @@ class WMTweetsListViewController: UIViewController {
     
     /// 请求数据
     private func fetchTweets(ofPage: Int) {
-        dataProvier.requestTweets(currentPage: currentPage, pageNum: pageNum) { [weak self] tweets in
+        
+        dataProvier.fetchTweets(currentPage: currentPage) { [weak self] (tweets) in
             guard let self = self else { return }
             if self.currentPage == 0 {
                 self.tweets = tweets
@@ -102,15 +102,16 @@ class WMTweetsListViewController: UIViewController {
                 self.tableView.mj_header.endRefreshing()
             } else {
                 self.tweets.append(contentsOf: tweets)
-                if tweets.count < self.pageNum {
+                if tweets.count < Constants.numPerPage {
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 } else {
                     self.tableView.mj_footer.endRefreshing()
                 }
             }
             
-            self.tableView.reloadData()
+            self.tableAdapter.reloadData()
         }
+
     }
     
 }

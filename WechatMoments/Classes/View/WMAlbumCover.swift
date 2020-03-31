@@ -46,7 +46,7 @@ class WMAlbumCover: UIView {
         addSubview(avatar)
         avatar.snp.makeConstraints { (make) in
             make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalTo(imageView.snp_bottom).offset(20)
+            make.bottom.equalTo(imageView.snp.bottom).offset(20)
             make.size.equalTo(CGSize(width: 60, height: 60))
         }
         
@@ -55,8 +55,8 @@ class WMAlbumCover: UIView {
         nickLabel.text = "Acoco"
         addSubview(nickLabel)
         nickLabel.snp.makeConstraints { (make) in
-            make.trailing.equalTo(avatar.snp_leading).offset(-20)
-            make.bottom.equalTo(imageView.snp_bottom).offset(-10)
+            make.trailing.equalTo(avatar.snp.leading).offset(-20)
+            make.bottom.equalTo(imageView.snp.bottom).offset(-10)
         }
     }
 

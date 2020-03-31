@@ -23,6 +23,10 @@ class WMTweetTableViewAdapter: NSObject {
         viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetMultipleImageContentView.self)")
         viewController.tableView.register(WMTweetCell.self, forCellReuseIdentifier: "\(WMTweetTextImageContentView.self)")
     }
+    
+    func reloadData() {
+        viewController?.tableView.reloadData()
+    }
 }
 
 extension WMTweetTableViewAdapter: UITableViewDelegate {
@@ -82,7 +86,6 @@ extension WMTweetTableViewAdapter: UIScrollViewDelegate {
         
         /// 导航栏渐变
         let ration = (y - cutting) / (navHeight / 2)
-        print("=====\(ration)")
         navi.updateUI(alpha: ration)
     }
 }

@@ -69,3 +69,19 @@ extension WMTweetModel: Codable {
         try container.encode(comments, forKey: .comments)
     }
 }
+
+struct User {
+    let profileImage: String
+    let avatar: String
+    let nick: String
+    let username: String
+    
+}
+extension User: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case profileImage = "profile-image"
+        case avatar
+        case nick
+        case username
+    }
+}

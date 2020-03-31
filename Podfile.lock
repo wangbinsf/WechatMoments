@@ -1,31 +1,34 @@
 PODS:
+  - Alamofire (5.0.5)
   - M80AttributedLabel (1.6.3)
   - MJRefresh (3.1.15.3)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
-  - SnapKit (4.2.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.0)
   - M80AttributedLabel
   - MJRefresh
   - SDWebImage
-  - SnapKit (= 4.2.0)
+  - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
+    - Alamofire
     - M80AttributedLabel
     - MJRefresh
     - SDWebImage
-  trunk:
     - SnapKit
 
 SPEC CHECKSUMS:
+  Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   M80AttributedLabel: d06543195d3e451d2ea62ad76d04aa9cea7661d4
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: d2e64e581cda00d0e38b89406c7bc436be3aa10a
+PODFILE CHECKSUM: 0db27e1eee787ec25d11c020b9dd206c9663c53a
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

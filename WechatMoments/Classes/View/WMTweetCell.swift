@@ -44,7 +44,7 @@ class WMTweetCell: UITableViewCell {
         nickLabel.font = WMConfig.shared.nickFont
         nickLabel.textColor = WMConfig.shared.nickColor
         nickLabel.snp.makeConstraints { (make) in
-            make.leading.equalTo(avatarImageView.snp_trailing).offset(10)
+            make.leading.equalTo(avatarImageView.snp.trailing).offset(10)
             make.top.equalTo(avatarImageView)
             make.trailing.greaterThanOrEqualToSuperview().offset(-10)
         }
@@ -143,7 +143,7 @@ class WMTweetCell: UITableViewCell {
         contentView.addSubview(commentsContentView!)
         commentsContentView!.snp.makeConstraints { (make) in
             make.leading.equalTo(nickLabel)
-            make.top.equalTo(customContentView.snp_bottom)
+            make.top.equalTo(customContentView.snp.bottom)
             make.trailing.equalTo(customContentView)
         }
     }

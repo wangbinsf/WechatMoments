@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C31B1AF52431EB60002FE9A6 /* WMAlbumCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */; };
 		C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF62431EBA6002FE9A6 /* Constants.swift */; };
+		C31D1CCD24331322005DB1A1 /* WMHTTPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */; };
 		C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */; };
 		C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */; };
 		C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */; };
@@ -27,7 +28,6 @@
 		C345B101242EF0DE00B7A7EC /* Pods_WechatMoments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C345B100242EF0DE00B7A7EC /* Pods_WechatMoments.framework */; };
 		C345B105242EF53300B7A7EC /* homework.json in Resources */ = {isa = PBXBuildFile; fileRef = C345B104242EF53300B7A7EC /* homework.json */; };
 		C345B10B242EF77F00B7A7EC /* WMTweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10A242EF77F00B7A7EC /* WMTweetModel.swift */; };
-		C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */; };
 		C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10E242F288500B7A7EC /* WMFileManager.swift */; };
 		C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B111242F29A900B7A7EC /* WMTweetCell.swift */; };
 		C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */; };
@@ -59,6 +59,7 @@
 		B4A47CA3426B4FE3E1786EC0 /* Pods-WechatMoments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WechatMoments.release.xcconfig"; path = "Target Support Files/Pods-WechatMoments/Pods-WechatMoments.release.xcconfig"; sourceTree = "<group>"; };
 		C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAlbumCover.swift; sourceTree = "<group>"; };
 		C31B1AF62431EBA6002FE9A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMHTTPTool.swift; sourceTree = "<group>"; };
 		C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetTableViewAdapter.swift; sourceTree = "<group>"; };
 		C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetImageContentView.swift; sourceTree = "<group>"; };
 		C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMImageContentConfig.swift; sourceTree = "<group>"; };
@@ -82,7 +83,6 @@
 		C345B102242EF0E600B7A7EC /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C345B104242EF53300B7A7EC /* homework.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = homework.json; sourceTree = "<group>"; };
 		C345B10A242EF77F00B7A7EC /* WMTweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetModel.swift; sourceTree = "<group>"; };
-		C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMModelResolver.swift; sourceTree = "<group>"; };
 		C345B10E242F288500B7A7EC /* WMFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMFileManager.swift; sourceTree = "<group>"; };
 		C345B111242F29A900B7A7EC /* WMTweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetCell.swift; sourceTree = "<group>"; };
 		C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMDataProvider.swift; sourceTree = "<group>"; };
@@ -228,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				C345B10A242EF77F00B7A7EC /* WMTweetModel.swift */,
-				C345B10C242EF8FC00B7A7EC /* WMModelResolver.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */,
+				C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -454,12 +454,12 @@
 				C3F50EEC242FA63700AC24F8 /* WMTextContentConfig.swift in Sources */,
 				C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */,
 				C3F50EE9242FA3C000AC24F8 /* WMCellContentConfigProtocol.swift in Sources */,
+				C31D1CCD24331322005DB1A1 /* WMHTTPTool.swift in Sources */,
 				C33604AC2430936500FC8B31 /* WMTweetMultipleImageContentView.swift in Sources */,
 				C3F50EE4242F9DC700AC24F8 /* WMTweetContentView.swift in Sources */,
 				C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */,
 				C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */,
 				C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */,
-				C345B10D242EF8FC00B7A7EC /* WMModelResolver.swift in Sources */,
 				C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */,
 				C33604A824307BEC00FC8B31 /* WMTweetTextImageContentView.swift in Sources */,
 				C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */,
@@ -644,7 +644,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangbinsf.WechatMoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -664,7 +664,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangbinsf.WechatMoments;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};

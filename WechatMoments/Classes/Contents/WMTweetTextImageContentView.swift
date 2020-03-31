@@ -54,7 +54,7 @@ class WMTweetTextImageContentView: WMTweetContentView {
         
         imageContent!.snp.makeConstraints { (make) in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(textContent!.snp_bottom)
+            make.top.equalTo(textContent!.snp.bottom)
             make.height.equalTo(imageHeight)
             make.bottom.equalToSuperview()
         }

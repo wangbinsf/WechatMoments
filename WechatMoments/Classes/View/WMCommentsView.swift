@@ -34,7 +34,7 @@ class WMCommentsView: UIView {
                 if lastCommentView == nil {
                     make.top.equalToSuperview()
                 } else {
-                    make.top.equalTo(lastCommentView!.snp_bottom)
+                    make.top.equalTo(lastCommentView!.snp.bottom)
                 }
                 /// bottom
                 if index == comments.count - 1 {

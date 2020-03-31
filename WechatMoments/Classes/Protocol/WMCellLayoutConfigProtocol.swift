@@ -30,7 +30,7 @@ extension WMCellLayoutConfigProtocol {
     func commentsSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         var height: CGFloat = 0
         if let comments = model.comments {
-            let count = comments.count
+//            let count = comments.count
             /// 这里需要根据文字计算高度
             height = calculateTotalHeightOfCommentView(comments)
         }
