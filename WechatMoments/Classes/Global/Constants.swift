@@ -28,16 +28,18 @@ struct Constants {
     static let numPerPage = 5
     
     static var isFullScreen: Bool {
-        if #available(iOS 11, *) {
-            guard let window = UIApplication.shared.delegate?.window, let unwrapedWindow = window else {
-                return false
-            }
-            
-            if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
-                print(unwrapedWindow.safeAreaInsets)
-                return true
-            }
-        }
-        return false
+        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        return statusBarHeight == 44
+//        if #available(iOS 11, *) {
+//            guard let window = UIApplication.shared.delegate?.window, let unwrapedWindow = window else {
+//                return false
+//            }
+//
+//            if unwrapedWindow.safeAreaInsets.left > 0 || unwrapedWindow.safeAreaInsets.bottom > 0 {
+//                print(unwrapedWindow.safeAreaInsets)
+//                return true
+//            }
+//        }
+//        return false
     }
 }

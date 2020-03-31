@@ -17,13 +17,30 @@ class WMTweetsListViewController: UIViewController {
     var tableView: UITableView!
     lazy var naviBar = WMCustomNavBar()
     private var dataProvier = WMBundleDataProvider()
+    private var albumCover = WMAlbumCover()
     private var tableAdapter: WMTweetTableViewAdapter!
+    private let indicator = UIActivityIndicatorView(style: .large)
     
     var tweets: [WMTweetModel] = [] {
         didSet {
             tableAdapter.tweets = tweets
             tableAdapter.reloadData()
         }
+    }
+    
+    func showIndicator() {
+        indicator.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        view.addSubview(indicator)
+        view.bringSubviewToFront(indicator)
+        indicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 80, height: 80))
+        }
+        indicator.startAnimating()
+    }
+    
+    func hideIndicator() {
+        indicator.stopAnimating()
     }
 
     override func viewDidLoad() {
@@ -34,8 +51,19 @@ class WMTweetsListViewController: UIViewController {
         setupTableAdapter()
         /// 导航栏
         configureNaviBar()
-        /// 请求数据
+        /// 请求用户信息
+        dataProvier.fetchUserInfo { [weak self] (user) in
+            guard let self = self else { return }
+            guard let user = user else {
+                return
+            }
+            self.albumCover.refresh(data: user)
+        }
+        /// 请求推文列表
+        showIndicator()
         dataProvier.requestTweets { [weak self] (tweets) in
+            self?.hideIndicator()
+            self?.tableView.mj_footer.isHidden = false
             self?.tweets = tweets
         }
     }
@@ -46,7 +74,8 @@ class WMTweetsListViewController: UIViewController {
         naviBar.title = "朋友圈"
         naviBar.snp.makeConstraints { (make) in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(44 + 20)
+            let height = Constants.isFullScreen ? 88 : 64
+            make.height.equalTo(height)
         }
     }
     
@@ -59,7 +88,7 @@ class WMTweetsListViewController: UIViewController {
         tableView.showsHorizontalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.contentInset = UIEdgeInsets(top: -Constants.albumCoverTopInset, left: 0, bottom: 0, right: 0)
-        let albumCover = WMAlbumCover()
+        
         let coverWH = tableView.bounds.width
         albumCover.frame.size = CGSize(width: coverWH, height: coverWH)
         tableView.tableHeaderView = albumCover
@@ -72,7 +101,7 @@ class WMTweetsListViewController: UIViewController {
             self.currentPage = 0
             self.fetchTweets(ofPage: self.currentPage)
         })
-        header?.ignoredScrollViewContentInsetTop = -20
+//        header?.ignoredScrollViewContentInsetTop = -20
         tableView.mj_header = header
         
         let footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
@@ -82,7 +111,7 @@ class WMTweetsListViewController: UIViewController {
         })
         footer?.setTitle("我是有底线的", for: .noMoreData)
         tableView.mj_footer = footer
-        
+        tableView.mj_footer.isHidden = true
     }
     
     private func setupTableAdapter() {
