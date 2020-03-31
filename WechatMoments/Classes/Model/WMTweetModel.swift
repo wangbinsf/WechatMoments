@@ -34,6 +34,7 @@ struct WMTweetModel {
     let comments: [Comment]?
     
 }
+
 extension WMTweetModel: Codable {
     
     enum CodingKeys: String, CodingKey {
@@ -75,8 +76,8 @@ struct User {
     let avatar: String
     let nick: String
     let username: String
-    
 }
+
 extension User: Decodable {
     enum CodingKeys: String, CodingKey {
         case profileImage = "profile-image"

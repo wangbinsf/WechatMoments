@@ -21,28 +21,13 @@ class WMTweetsListViewController: UIViewController {
     private var tableAdapter: WMTweetTableViewAdapter!
     private let indicator = UIActivityIndicatorView(style: .large)
     
-    var tweets: [WMTweetModel] = [] {
+    private var tweets: [WMTweetModel] = [] {
         didSet {
             tableAdapter.tweets = tweets
             tableAdapter.reloadData()
         }
     }
     
-    func showIndicator() {
-        indicator.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-        view.addSubview(indicator)
-        view.bringSubviewToFront(indicator)
-        indicator.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.size.equalTo(CGSize(width: 80, height: 80))
-        }
-        indicator.startAnimating()
-    }
-    
-    func hideIndicator() {
-        indicator.stopAnimating()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         /// table
@@ -62,9 +47,12 @@ class WMTweetsListViewController: UIViewController {
         /// 请求推文列表
         showIndicator()
         dataProvier.requestTweets { [weak self] (tweets) in
-            self?.hideIndicator()
-            self?.tableView.mj_footer.isHidden = false
-            self?.tweets = tweets
+            guard let self = self else { return }
+            self.hideIndicator()
+            if !tweets.isEmpty {
+                self.tableView.mj_footer.isHidden = false
+                self.tweets = tweets
+            }
         }
     }
     
@@ -77,6 +65,12 @@ class WMTweetsListViewController: UIViewController {
             let height = Constants.isFullScreen ? 88 : 64
             make.height.equalTo(height)
         }
+    }
+    
+    private func setupTableAdapter() {
+        tableAdapter = WMTweetTableViewAdapter(viewController: self)
+        tableView.delegate = tableAdapter
+        tableView.dataSource = tableAdapter
     }
     
     private func configureTableView() {
@@ -95,15 +89,16 @@ class WMTweetsListViewController: UIViewController {
         
         view.addSubview(tableView)
         
+        /// mj_header
         let header = MJRefreshNormalHeader(refreshingBlock: {
             [weak self] in
             guard let self = self else { return }
             self.currentPage = 0
             self.fetchTweets(ofPage: self.currentPage)
         })
-//        header?.ignoredScrollViewContentInsetTop = -20
         tableView.mj_header = header
         
+        /// mj_footer
         let footer = MJRefreshAutoNormalFooter(refreshingBlock: { [weak self] in
             guard let self = self else { return }
             self.currentPage += 1
@@ -114,15 +109,23 @@ class WMTweetsListViewController: UIViewController {
         tableView.mj_footer.isHidden = true
     }
     
-    private func setupTableAdapter() {
-        tableAdapter = WMTweetTableViewAdapter(viewController: self)
-        tableView.delegate = tableAdapter
-        tableView.dataSource = tableAdapter
+    private func showIndicator() {
+        indicator.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        view.addSubview(indicator)
+        view.bringSubviewToFront(indicator)
+        indicator.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: 80, height: 80))
+        }
+        indicator.startAnimating()
+    }
+    
+    private func hideIndicator() {
+        indicator.stopAnimating()
     }
     
     /// 请求数据
     private func fetchTweets(ofPage: Int) {
-        
         dataProvier.fetchTweets(currentPage: currentPage) { [weak self] (tweets) in
             guard let self = self else { return }
             if self.currentPage == 0 {
@@ -137,7 +140,6 @@ class WMTweetsListViewController: UIViewController {
                     self.tableView.mj_footer.endRefreshing()
                 }
             }
-            
             self.tableAdapter.reloadData()
         }
 

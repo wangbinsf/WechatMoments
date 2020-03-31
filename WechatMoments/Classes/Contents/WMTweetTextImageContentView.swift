@@ -13,33 +13,9 @@ class WMTweetTextImageContentView: WMTweetContentView {
     
     var textContent: WMTweetTextContentView?
     var imageContent: WMTweetContentView?
-    
     var imageHeight: CGFloat = 0
     
-    
     private let label = M80AttributedLabel()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-//        addTextContent()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-//        addTextContent()
-    }
-    
-    func addTextContent() {
-        /// 显示文本
-//        var height: CGFloat = 0
-//        let labelWidth = width - edges.left - edges.right
-//        if let content = model.content {
-            //            label.font = WMConfig.shared.textFont!
-//            label.text = content
-//            height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
-//        }
-        
-    }
     
     func addContent() {
         label.text = tweet!.content!
@@ -88,4 +64,5 @@ class WMTweetTextImageContentView: WMTweetContentView {
         textContent!.refresh(data: data)
         imageContent!.refresh(data: data)
     }
+    
 }

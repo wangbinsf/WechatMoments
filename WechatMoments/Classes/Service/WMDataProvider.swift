@@ -24,7 +24,7 @@ class WMBundleDataProvider {
             switch result {
             case .failure(let error):
                 /// 处理错误，上传服务器或其他处理，不要抛给用户
-                assert(false)
+//                assert(false)
                 print(error)
                 completionHandle(nil)
             case .success(let user):
@@ -42,7 +42,7 @@ class WMBundleDataProvider {
             case .failure(let error):
                 /// 处理错误，上传服务器或其他处理，不要抛给用户
                 print(error)
-                assert(false)
+//                assert(false)
                 completionHandle([])
             case .success(let tweets):
                 let validData = self.processSourceData(tweets)
@@ -51,8 +51,6 @@ class WMBundleDataProvider {
             }
         }
     }
-    
-    
     
     /// 根据页数、每页条数返回
     /// 根据需要获取数据,默认每次请求pageNum一致

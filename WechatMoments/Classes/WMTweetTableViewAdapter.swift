@@ -9,6 +9,7 @@
 import UIKit
 
 class WMTweetTableViewAdapter: NSObject {
+    
     var tweets: [WMTweetModel] = []
     /// 缓存高度
     var cellHeights: [IndexPath: CGFloat] = [:]
@@ -67,7 +68,6 @@ extension WMTweetTableViewAdapter: UITableViewDataSource {
         cell.refreshData(tweet)
         return cell
     }
-    
     
 }
 

@@ -10,6 +10,13 @@ import UIKit
 
 class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
     
+    var contentWidth = CGFloat(Constants.screenWidth - 94)
+    
+    func commentsSize(model: WMTweetModel, width: CGFloat) -> CGSize {
+        return WMCellContentConfigFactory.shared.configBy(model: model).commentsSize(model: model, width: width)
+    }
+    
+    
     func contentInset(model: WMTweetModel) -> UIEdgeInsets {
         return WMCellContentConfigFactory.shared.configBy(model: model).contentInset(model: model)
     }
@@ -23,13 +30,7 @@ class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
         let config = factory.configBy(model: model)
         return config.cellClass(model: model)
     }
-//    
-//    func commentsSize(model: WMTweetModel, width: CGFloat) -> CGSize {
-//        let factory = WMCellContentConfigFactory.shared
-//        let config = factory.configBy(model: model)
-//        return config.commentsSize(model: model, width: width)
-//    }
-
+    
 }
 
 

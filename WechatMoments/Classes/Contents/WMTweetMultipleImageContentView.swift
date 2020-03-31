@@ -9,10 +9,8 @@
 import UIKit
 
 class WMTweetMultipleImageContentView: WMTweetContentView {
-    /// 当前视图只绘制图片数量 > 1的情况
-    
+
     /// 根据model显示图片
-    ///
     override func refresh(data: WMTweetModel) {
         super.refresh(data: data)
         guard let images = data.images, images.count > 0 else {

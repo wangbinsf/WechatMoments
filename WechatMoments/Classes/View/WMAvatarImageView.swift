@@ -15,23 +15,10 @@ class WMAvatarImageView: UIControl {
     private var cornerRadius: CGFloat = 0.0
     
     private var originalImage: UIImage?
-    /// #imageLiteral(resourceName: "avatar_user")
     
     func setAvatar(_ name: String) {
         imageView.sd_setImage(with: URL(string: name), placeholderImage: #imageLiteral(resourceName: "avatar_user"))
     }
-//    var avatarName: String {
-//        set {
-//            if originalImage != nil {
-//                return
-//            }
-//            let url = URL(string: newValue)
-//            imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "avatar_user"))
-//        }
-//        get {
-//            return ""
-//        }
-//    }
     
     var image: UIImage {
         set {

@@ -10,7 +10,6 @@ import UIKit
 
 class WMImageContentConfig: WMCellContentConfigProtocol {
     
-    
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         let edges = contentInset(model: model)
         let imageWidth = width - edges.left - edges.right
@@ -22,6 +21,5 @@ class WMImageContentConfig: WMCellContentConfigProtocol {
     func cellClass(model: WMTweetModel) -> String {
         return "\(WMTweetImageContentView.self)"
     }
-    
 
 }

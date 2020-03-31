@@ -11,12 +11,8 @@ import M80AttributedLabel
 
 class WMTextContentConfig: WMCellContentConfigProtocol {
     
-
-    
     private let label = M80AttributedLabel()
-    
 
-    
     func contentSize(model: WMTweetModel, width: CGFloat) -> CGSize {
         /// 计算文本size
         var height: CGFloat = 0
@@ -32,6 +28,5 @@ class WMTextContentConfig: WMCellContentConfigProtocol {
     func cellClass(model: WMTweetModel) -> String {
         return "WMTweetTextContentView"
     }
-    
 
 }

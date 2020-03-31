@@ -10,9 +10,6 @@ import UIKit
 import M80AttributedLabel
 
 class WMCommentsView: UIView {
-    /// 评论视图
-    /// 评论
-    /// 回复
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +63,6 @@ class WMCommentsView: UIView {
         return singView
     }
     
-    
     func heightOfComment(_ comment: WMTweetModel.Comment) -> CGFloat {
         let lablel = M80AttributedLabel()
         lablel.text = comment.content
@@ -76,12 +72,12 @@ class WMCommentsView: UIView {
 }
 
 extension WMCommentsView: M80AttributedLabelDelegate {
+    
     func m80AttributedLabel(_ label: M80AttributedLabel, clickedOnLink linkData: Any) {
         guard let comment = linkData as? WMTweetModel.Comment else {
             return
         }
         print(comment.sender)
     }
-    
-    
+
 }

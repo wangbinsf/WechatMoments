@@ -9,12 +9,10 @@
 import UIKit
 import SnapKit
 import SDWebImage
+
 class WMTweetImageContentView: WMTweetContentView {
     
-    /// 当前视图只绘制图片数量 > 0的情况
-    
     lazy var singleImageView = UIImageView()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +36,6 @@ class WMTweetImageContentView: WMTweetContentView {
     }
     
     /// 根据model显示图片
-    ///
     override func refresh(data: WMTweetModel) {
         super.refresh(data: data)
         guard let images = data.images, images.count > 0 else {
