@@ -10,6 +10,9 @@
 		C31B1AF52431EB60002FE9A6 /* WMAlbumCover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */; };
 		C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF62431EBA6002FE9A6 /* Constants.swift */; };
 		C31D1CCD24331322005DB1A1 /* WMHTTPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */; };
+		C3239BC624345932000ED609 /* WMExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239BC524345932000ED609 /* WMExtensionView.swift */; };
+		C3239BC92434955C000ED609 /* ImageCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239BC82434955C000ED609 /* ImageCacheProtocol.swift */; };
+		C3239BCB24349644000ED609 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239BCA24349644000ED609 /* ImageCache.swift */; };
 		C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */; };
 		C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */; };
 		C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */; };
@@ -60,6 +63,9 @@
 		C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAlbumCover.swift; sourceTree = "<group>"; };
 		C31B1AF62431EBA6002FE9A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMHTTPTool.swift; sourceTree = "<group>"; };
+		C3239BC524345932000ED609 /* WMExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMExtensionView.swift; sourceTree = "<group>"; };
+		C3239BC82434955C000ED609 /* ImageCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheProtocol.swift; sourceTree = "<group>"; };
+		C3239BCA24349644000ED609 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetTableViewAdapter.swift; sourceTree = "<group>"; };
 		C33604A3243055E400FC8B31 /* WMTweetImageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetImageContentView.swift; sourceTree = "<group>"; };
 		C33604A5243062DD00FC8B31 /* WMImageContentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMImageContentConfig.swift; sourceTree = "<group>"; };
@@ -124,6 +130,15 @@
 				B4A47CA3426B4FE3E1786EC0 /* Pods-WechatMoments.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C3239BC72434950D000ED609 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				C3239BC82434955C000ED609 /* ImageCacheProtocol.swift */,
+				C3239BCA24349644000ED609 /* ImageCache.swift */,
+			);
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 		C33604A124304C2600FC8B31 /* Content */ = {
@@ -196,6 +211,7 @@
 		C345B107242EF55900B7A7EC /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C3239BC72434950D000ED609 /* ImageCache */,
 				C33604AF2430D86C00FC8B31 /* Controller */,
 				C33604A224304C9500FC8B31 /* Global */,
 				C3F50EEA242FA61700AC24F8 /* Contents */,
@@ -240,6 +256,7 @@
 				C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */,
 				C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */,
 				C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */,
+				C3239BC524345932000ED609 /* WMExtensionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,7 +466,9 @@
 			files = (
 				C345B0FD242EED9000B7A7EC /* WMTweetsListViewController.swift in Sources */,
 				C3F50EEE242FA84A00AC24F8 /* WMTweetTextContentView.swift in Sources */,
+				C3239BC92434955C000ED609 /* ImageCacheProtocol.swift in Sources */,
 				C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */,
+				C3239BC624345932000ED609 /* WMExtensionView.swift in Sources */,
 				C31B1AF52431EB60002FE9A6 /* WMAlbumCover.swift in Sources */,
 				C3F50EEC242FA63700AC24F8 /* WMTextContentConfig.swift in Sources */,
 				C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */,
@@ -469,6 +488,7 @@
 				C345B0D4242EE45200B7A7EC /* AppDelegate.swift in Sources */,
 				C3F50EE2242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift in Sources */,
 				C3F50EDF242F931A00AC24F8 /* WMCommentsView.swift in Sources */,
+				C3239BCB24349644000ED609 /* ImageCache.swift in Sources */,
 				C3F50EDD242F858B00AC24F8 /* ImageExtension.swift in Sources */,
 				C3F50EE6242FA11F00AC24F8 /* WMCellLayoutConfig.swift in Sources */,
 				C345B0D6242EE45200B7A7EC /* SceneDelegate.swift in Sources */,
