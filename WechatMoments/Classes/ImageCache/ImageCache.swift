@@ -8,83 +8,100 @@
 
 import UIKit
 
+// 内存缓存协议
+public protocol ImageCacheProtocol: class {
+    // 根据url返回图片
+    func image(for url: URL) -> UIImage?
+    // 根据url保存图片
+    func setImage(_ image: UIImage?, for url: URL)
+    // 根据url删除图片
+    func removeImage(for url: URL)
+    // 删除所有图片
+    func removeAllImages()
+}
+
+
 public final class ImageCache: ImageCacheProtocol {
 
-
-    // 1st level cache, that contains encoded images
+    // 保存编码之后的数据
     private lazy var imageCache: NSCache<AnyObject, AnyObject> = {
         let cache = NSCache<AnyObject, AnyObject>()
         cache.countLimit = config.countLimit
         return cache
     }()
-    // 2nd level cache, that contains decoded images
+    
+    // 保存解码之后的数据
     private lazy var decodedImageCache: NSCache<AnyObject, AnyObject> = {
         let cache = NSCache<AnyObject, AnyObject>()
         cache.totalCostLimit = config.memoryLimit
         return cache
     }()
-    private let lock = NSLock()
-    private let config: Config
-    let semphore = DispatchSemaphore(value: 0)
+    
+    private let config = Config.defaultConfig
+    private let semphore = DispatchSemaphore(value: 1)
 
-    public struct Config {
-        public let countLimit: Int
-        public let memoryLimit: Int
+    struct Config {
+        let countLimit: Int
+        let memoryLimit: Int
 
-        public static let defaultConfig = Config(countLimit: 100, memoryLimit: 1024 * 1024 * 100) // 100 MB
+        static let defaultConfig = Config(countLimit: 100, memoryLimit: 1024 * 1024 * 100) // 100 MB
     }
+    
+    private init() {}
+    static let shared = ImageCache()
 
-    public init(config: Config = Config.defaultConfig) {
-        self.config = config
-    }
-
+    /// 查询图片
     public func image(for url: URL) -> UIImage? {
-        lock.lock(); defer { lock.unlock() }
         semphore.wait()
         defer {
             semphore.signal()
         }
-        // the best case scenario -> there is a decoded image in memory
+        /// 从编码容器里查询
         if let decodedImage = decodedImageCache.object(forKey: url as AnyObject) as? UIImage {
             return decodedImage
         }
-        // search for image data
+        
+        /// 从未编码容器查询
         if let image = imageCache.object(forKey: url as AnyObject) as? UIImage {
             let decodedImage = image.decodedImage()
             decodedImageCache.setObject(image as AnyObject, forKey: url as AnyObject, cost: decodedImage.diskSize)
             return decodedImage
         }
+        
+        /// 查询失败
         return nil
     }
 
-    public func insertImage(_ image: UIImage?, for url: URL) {
+    /// 保存图片
+    public func setImage(_ image: UIImage?, for url: URL) {
         guard let image = image else { return removeImage(for: url) }
+        /// 图片编码
         let decompressedImage = image.decodedImage()
-
-        lock.lock(); defer { lock.unlock() }
+        semphore.wait()
+        defer {
+            semphore.signal()
+        }
         imageCache.setObject(decompressedImage, forKey: url as AnyObject, cost: 1)
         decodedImageCache.setObject(image as AnyObject, forKey: url as AnyObject, cost: decompressedImage.diskSize)
     }
 
     public func removeImage(for url: URL) {
-        lock.lock(); defer { lock.unlock() }
+        semphore.wait()
+        defer {
+            semphore.signal()
+        }
         imageCache.removeObject(forKey: url as AnyObject)
         decodedImageCache.removeObject(forKey: url as AnyObject)
     }
 
     public func removeAllImages() {
-        lock.lock(); defer { lock.unlock() }
+        semphore.wait()
+        defer {
+            semphore.signal()
+        }
         imageCache.removeAllObjects()
         decodedImageCache.removeAllObjects()
     }
 
-    public subscript(_ key: URL) -> UIImage? {
-        get {
-            return image(for: key)
-        }
-        set {
-            return insertImage(newValue, for: key)
-        }
-    }
 }
 

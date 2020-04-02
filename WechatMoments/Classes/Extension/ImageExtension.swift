@@ -21,7 +21,7 @@ extension UIImage {
         return UIImage(cgImage: decodedImage)
     }
     
-    // Rough estimation of how much memory image uses in bytes
+    // 粗略估计图片占用内存
     var diskSize: Int {
         guard let cgImage = cgImage else { return 0 }
         return cgImage.bytesPerRow * cgImage.height

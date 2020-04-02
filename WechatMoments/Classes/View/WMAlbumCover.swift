@@ -66,7 +66,7 @@ class WMAlbumCover: UIView {
             profileImageView.sd_setImage(with: profileUrl)
         }
         if let avatarUrl = URL(string: data.avatar) {
-            avatar.sd_setImage(with: avatarUrl)
+            avatar.wm_setImage(with: avatarUrl)
         }
     }
 
