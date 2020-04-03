@@ -12,15 +12,20 @@ import UIKit
 
 class ImageCacheLoader {
     
+    private var ioQueue = DispatchQueue(label: "wechatmoment-queue", qos: .background, attributes: .concurrent)
+    
     /// 获取图片
-    func loadCacheImage(with url: URL, completionHandle: (UIImage?) -> Void) {
+    func loadCacheImage(with url: URL, completionHandle: @escaping (UIImage?) -> Void) {
         if let image = ImageCache.shared.image(for: url) {
             /// 1、在内存中查找
             completionHandle(image)
         } else {
             /// 2、如果内存不存在，在磁盘查找
-            let image = retrieveImage(forKey: url)
-            completionHandle(image)
+            ioQueue.async {
+                let image = self.retrieveImage(forKey: url)
+                completionHandle(image)
+                ImageCache.shared.setImage(image, for: url)
+            }
         }
     }
     
@@ -29,7 +34,10 @@ class ImageCacheLoader {
         /// 存储到内存
         ImageCache.shared.setImage(image, for: url)
         /// 存储到磁盘
-        store(image: image, forKey: url)
+        ioQueue.async {
+            self.store(image: image, forKey: url)
+        }
+        
     }
     
     /// 存储照片到本地

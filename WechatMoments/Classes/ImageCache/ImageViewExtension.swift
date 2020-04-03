@@ -13,6 +13,9 @@ extension UIImageView {
     
     typealias LoadImageCompletedHandle = (UIImage?) -> Void
     
+//    func sd_setImage(with url: URL) {
+//        wm_setImage(with: url)
+//    }
     func wm_setImage(with url: URL) {
         wm_setImage(with: url, placeholderColor: nil)
     }

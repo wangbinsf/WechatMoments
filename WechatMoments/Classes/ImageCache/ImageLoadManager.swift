@@ -27,10 +27,12 @@ class ImageLoadManager {
         cacheLoader.loadCacheImage(with: url) { (image) in
             if let image = image {
                 /// 从内存或者磁盘读取到
-                completeHandle(image)
+                DispatchQueue.main.async {
+                    completeHandle(image)
+                }
             } else {
                 /// 本地不存在
-                imageDownloader.downloadImage(with: url) { (image) in
+                self.imageDownloader.downloadImage(with: url) { (image) in
                     if let downloadedImage = image {
                         completeHandle(downloadedImage)
                         /// 下载成功，缓存到内存及文件

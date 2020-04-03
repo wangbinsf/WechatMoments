@@ -44,7 +44,7 @@ class WMTweetMultipleImageContentView: WMTweetContentView {
                 make.width.equalTo(imageViewWH)
                 make.height.equalTo(imageViewWH)
             }
-            imageView.sd_setImage(with: URL(string: imgName)!)
+            imageView.wm_setImage(with: URL(string: imgName)!)
         }
     }
 }
