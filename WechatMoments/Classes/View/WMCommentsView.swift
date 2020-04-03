@@ -46,6 +46,7 @@ class WMCommentsView: UIView {
     func singleCommentView(_ comment: WMTweetModel.Comment) -> UIView {
         let singView = UIView()
         let textLabel = M80AttributedLabel()
+        textLabel.textAlignment = .left
         textLabel.underLineForLink = false
         textLabel.autoDetectLinks = false
         let senderNick = comment.sender.nick
@@ -66,7 +67,7 @@ class WMCommentsView: UIView {
     func heightOfComment(_ comment: WMTweetModel.Comment) -> CGFloat {
         let lablel = M80AttributedLabel()
         lablel.text = comment.content
-        let height = lablel.sizeThatFits(CGSize(width: 320, height: CGFloat.greatestFiniteMagnitude)).height
+        let height = lablel.sizeThatFits(CGSize(width: Constants.screenWidth - 94, height: CGFloat.greatestFiniteMagnitude)).height
         return height
     }
 }

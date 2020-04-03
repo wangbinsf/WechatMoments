@@ -45,7 +45,7 @@ extension WMTweetTableViewAdapter: UITableViewDelegate {
         /// 内容高度
         let layoutConfig = WMConfig.shared.layoutConfig
         let contentTop = layoutConfig.contentInset(model: tweet).top
-        let contentSize = layoutConfig.contentSize(model: tweet, width: tableView.frame.width)
+        let contentSize = layoutConfig.contentSize(model: tweet, width: Constants.screenWidth)
         
         /// 评论高度
         let commentsSize = layoutConfig.commentsSize(model: tweet, width: tableView.frame.width).height

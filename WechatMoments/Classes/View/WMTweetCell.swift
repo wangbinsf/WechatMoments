@@ -122,7 +122,7 @@ class WMTweetCell: UITableViewCell {
         }
         let config = WMConfig.shared.layoutConfig
         let edges = config.contentInset(model: model)
-        let size = config.contentSize(model: model, width: frame.width)
+        let size = config.contentSize(model: model, width: Constants.screenWidth)
         
         customContentView?.snp.makeConstraints({ (make) in
             make.leading.equalTo(edges.left)

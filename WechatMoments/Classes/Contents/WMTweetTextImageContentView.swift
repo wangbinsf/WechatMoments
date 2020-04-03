@@ -19,7 +19,7 @@ class WMTweetTextImageContentView: WMTweetContentView {
     
     func addContent() {
         label.text = tweet!.content!
-        let height = label.sizeThatFits(CGSize(width: 320, height: CGFloat.greatestFiniteMagnitude))
+        let height = label.sizeThatFits(CGSize(width: Constants.screenWidth - 94, height: CGFloat.greatestFiniteMagnitude))
         addSubview(textContent!)
         textContent!.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalToSuperview()
@@ -57,7 +57,7 @@ class WMTweetTextImageContentView: WMTweetContentView {
         } else if images.count > 1 {
             imageContent = WMTweetMultipleImageContentView()
             let config = WMMultipleImageContentConfig()
-            let size = config.contentSize(model: data, width: frame.width)
+            let size = config.contentSize(model: data, width: Constants.screenWidth)
             imageHeight = size.height
         }
         addContent()
