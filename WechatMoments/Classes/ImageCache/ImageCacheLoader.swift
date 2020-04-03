@@ -76,12 +76,14 @@ class ImageCacheLoader {
     }
     
     
-    private func filePath(forKey key: URL) -> URL? {
+    func filePath(forKey key: URL) -> URL? {
         let fileManager = FileManager.default
         guard var documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
-        documentURL.appendPathComponent(key.lastPathComponent)
+//        documentURL.appendPathComponent(key.lastPathComponent)
+        documentURL.appendPathComponent("\(key.hashValue).png")
+        print(documentURL.path)
         return documentURL
     }
     
