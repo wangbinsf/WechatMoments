@@ -11,7 +11,6 @@
 		C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31B1AF62431EBA6002FE9A6 /* Constants.swift */; };
 		C31C0257243582E40030FA11 /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C0256243582E40030FA11 /* ImageCacheLoader.swift */; };
 		C31C02592435867F0030FA11 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C02582435867F0030FA11 /* ImageDownloader.swift */; };
-		C31C025D2435909B0030FA11 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C025C2435909B0030FA11 /* ImageViewExtension.swift */; };
 		C31C025F243596D80030FA11 /* ImageLoadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31C025E243596D80030FA11 /* ImageLoadManager.swift */; };
 		C31D1CCD24331322005DB1A1 /* WMHTTPTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */; };
 		C3239BC624345932000ED609 /* WMExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3239BC524345932000ED609 /* WMExtensionView.swift */; };
@@ -37,9 +36,11 @@
 		C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10E242F288500B7A7EC /* WMFileManager.swift */; };
 		C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B111242F29A900B7A7EC /* WMTweetCell.swift */; };
 		C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */; };
+		C3B7FC0024382C9F00D63DD5 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7FBFF24382C9F00D63DD5 /* UIColor.swift */; };
+		C3B7FC0224382F2400D63DD5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7FC0124382F2400D63DD5 /* UIImageView.swift */; };
 		C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */; };
 		C3F50EDA242F83BE00AC24F8 /* WMConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */; };
-		C3F50EDD242F858B00AC24F8 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EDC242F858B00AC24F8 /* ImageExtension.swift */; };
+		C3F50EDD242F858B00AC24F8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EDC242F858B00AC24F8 /* Image.swift */; };
 		C3F50EDF242F931A00AC24F8 /* WMCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */; };
 		C3F50EE2242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EE1242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift */; };
 		C3F50EE4242F9DC700AC24F8 /* WMTweetContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EE3242F9DC700AC24F8 /* WMTweetContentView.swift */; };
@@ -67,7 +68,6 @@
 		C31B1AF62431EBA6002FE9A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C31C0256243582E40030FA11 /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
 		C31C02582435867F0030FA11 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
-		C31C025C2435909B0030FA11 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		C31C025E243596D80030FA11 /* ImageLoadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadManager.swift; sourceTree = "<group>"; };
 		C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMHTTPTool.swift; sourceTree = "<group>"; };
 		C3239BC524345932000ED609 /* WMExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMExtensionView.swift; sourceTree = "<group>"; };
@@ -98,9 +98,11 @@
 		C345B10E242F288500B7A7EC /* WMFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMFileManager.swift; sourceTree = "<group>"; };
 		C345B111242F29A900B7A7EC /* WMTweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetCell.swift; sourceTree = "<group>"; };
 		C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMDataProvider.swift; sourceTree = "<group>"; };
+		C3B7FBFF24382C9F00D63DD5 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		C3B7FC0124382F2400D63DD5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAvatarImageView.swift; sourceTree = "<group>"; };
 		C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMConfig.swift; sourceTree = "<group>"; };
-		C3F50EDC242F858B00AC24F8 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		C3F50EDC242F858B00AC24F8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMCommentsView.swift; sourceTree = "<group>"; };
 		C3F50EE1242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMCellLayoutConfigProtocol.swift; sourceTree = "<group>"; };
 		C3F50EE3242F9DC700AC24F8 /* WMTweetContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetContentView.swift; sourceTree = "<group>"; };
@@ -144,7 +146,6 @@
 				C3239BCA24349644000ED609 /* ImageCache.swift */,
 				C31C0256243582E40030FA11 /* ImageCacheLoader.swift */,
 				C31C02582435867F0030FA11 /* ImageDownloader.swift */,
-				C31C025C2435909B0030FA11 /* ImageViewExtension.swift */,
 				C31C025E243596D80030FA11 /* ImageLoadManager.swift */,
 			);
 			path = ImageCache;
@@ -282,7 +283,9 @@
 		C3F50EDB242F855500AC24F8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C3F50EDC242F858B00AC24F8 /* ImageExtension.swift */,
+				C3F50EDC242F858B00AC24F8 /* Image.swift */,
+				C3B7FBFF24382C9F00D63DD5 /* UIColor.swift */,
+				C3B7FC0124382F2400D63DD5 /* UIImageView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -498,11 +501,12 @@
 				C3F50EE2242F99A400AC24F8 /* WMCellLayoutConfigProtocol.swift in Sources */,
 				C3F50EDF242F931A00AC24F8 /* WMCommentsView.swift in Sources */,
 				C3239BCB24349644000ED609 /* ImageCache.swift in Sources */,
-				C3F50EDD242F858B00AC24F8 /* ImageExtension.swift in Sources */,
+				C3F50EDD242F858B00AC24F8 /* Image.swift in Sources */,
 				C3F50EE6242FA11F00AC24F8 /* WMCellLayoutConfig.swift in Sources */,
 				C31C02592435867F0030FA11 /* ImageDownloader.swift in Sources */,
+				C3B7FC0224382F2400D63DD5 /* UIImageView.swift in Sources */,
 				C345B0D6242EE45200B7A7EC /* SceneDelegate.swift in Sources */,
-				C31C025D2435909B0030FA11 /* ImageViewExtension.swift in Sources */,
+				C3B7FC0024382C9F00D63DD5 /* UIColor.swift in Sources */,
 				C3F50EDA242F83BE00AC24F8 /* WMConfig.swift in Sources */,
 				C345B10B242EF77F00B7A7EC /* WMTweetModel.swift in Sources */,
 				C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */,

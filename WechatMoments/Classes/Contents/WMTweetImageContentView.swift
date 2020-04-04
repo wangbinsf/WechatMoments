@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import SDWebImage
+//import SDWebImage
 
 class WMTweetImageContentView: WMTweetContentView {
     
@@ -26,7 +26,7 @@ class WMTweetImageContentView: WMTweetContentView {
     
     func setUI() {
         clipsToBounds = true
-        singleImageView.contentMode = .scaleAspectFit
+        singleImageView.contentMode = .scaleAspectFill
         singleImageView.backgroundColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
         addSubview(singleImageView)
         singleImageView.snp.makeConstraints { (make) in
@@ -50,21 +50,7 @@ class WMTweetImageContentView: WMTweetContentView {
     /// 处理一张图片的情形
     func showSingleImage() {
         guard let tweet = tweet, let image = tweet.images?.first, let url = URL(string: image.url) else { return }
-        SDWebImageManager.shared().imageDownloader?.downloadTimeout = 200
-        singleImageView.sd_setImage(with: url, placeholderImage: nil, options: .lowPriority, progress: { (a, b, url) in
-            print(a, b)
-        }) { (image, error, cache, url) in
-            /// 下载完成，计算显示布局
-            /// 已经是主线程
-            guard let image = image else { return }
-            let scale = image.size.width / image.size.height
-            let maxHeight: CGFloat = 200
-            let maxWidth = maxHeight * scale
-            self.singleImageView.snp.updateConstraints { (make) in
-                make.size.equalTo(CGSize(width: maxWidth, height: maxHeight))
-            }
-        }
-
+        singleImageView.wm_setImage(with: url)
     }
 
 }

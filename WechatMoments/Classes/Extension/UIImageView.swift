@@ -1,23 +1,20 @@
 //
-//  ImageViewExtension.swift
+//  UIImageView.swift
 //  WechatMoments
 //
-//  Created by 王宾宾 on 2020/4/2.
+//  Created by 王宾宾 on 2020/4/4.
 //  Copyright © 2020 王宾宾. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import Foundation
 
 extension UIImageView {
     
     typealias LoadImageCompletedHandle = (UIImage?) -> Void
     
-//    func sd_setImage(with url: URL) {
-//        wm_setImage(with: url)
-//    }
     func wm_setImage(with url: URL) {
-        wm_setImage(with: url, placeholderColor: nil)
+        wm_setImage(with: url, placeholderColor: UIColor.random)
     }
     
     func wm_setImage(with url: URL, placeholderColor: UIColor?) {

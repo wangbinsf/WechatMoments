@@ -20,7 +20,6 @@ class WMTextImageContentConfig: WMCellContentConfigProtocol {
         let edges = contentInset(model: model)
         let labelWidth = width - edges.left - edges.right
         if let content = model.content {
-            //            label.font = WMConfig.shared.textFont!
             label.text = content
             height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
         }

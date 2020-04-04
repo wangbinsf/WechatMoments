@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import CryptoKit
+
+func MD5(string: String) -> String {
+    let digest = Insecure.MD5.hash(data: string.data(using: .utf8) ?? Data())
+
+    return digest.map {
+        String(format: "%02hhx", $0)
+    }.joined()
+}
 
 /// 处理图片内存及磁盘的读取操作
 
@@ -37,7 +46,6 @@ class ImageCacheLoader {
         ioQueue.async {
             self.store(image: image, forKey: url)
         }
-        
     }
     
     /// 存储照片到本地
@@ -55,15 +63,6 @@ class ImageCacheLoader {
                 }
             }
         }
-//        if let jpgeRepresentation = image.jpegData(compressionQuality: 1.0) {
-//            if let filePath = filePath(forKey: key) {
-//                do {
-//                    try jpgeRepresentation.write(to: filePath, options: .atomic)
-//                } catch let err {
-//                    print("Saving results in error: ", err)
-//                }
-//            }
-//        }
     }
     
     /// 从本地读取照片
@@ -75,15 +74,12 @@ class ImageCacheLoader {
         return nil
     }
     
-    
     func filePath(forKey key: URL) -> URL? {
         let fileManager = FileManager.default
         guard var documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
-//        documentURL.appendPathComponent(key.lastPathComponent)
-        documentURL.appendPathComponent("\(key.hashValue).png")
-        print(documentURL.path)
+        documentURL.appendPathComponent("\(MD5(string: key.absoluteString)).png")
         return documentURL
     }
     

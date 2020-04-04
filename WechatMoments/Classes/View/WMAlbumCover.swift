@@ -63,10 +63,10 @@ class WMAlbumCover: UIView {
     func refresh(data: User) {
         nickLabel.text = data.nick
         if let profileUrl = URL(string: data.profileImage) {
-            profileImageView.sd_setImage(with: profileUrl)
+            profileImageView.wm_setImage(with: profileUrl)
         }
         if let avatarUrl = URL(string: data.avatar) {
-            avatar.sd_setImage(with: avatarUrl)
+            avatar.wm_setImage(with: avatarUrl, placeholderColor: .clear)
         }
     }
 

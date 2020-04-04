@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
 
 class WMAvatarImageView: UIControl {
     
@@ -17,7 +17,6 @@ class WMAvatarImageView: UIControl {
     private var originalImage: UIImage?
     
     func setAvatar(_ name: String) {
-//        imageView.sd_setImage(with: URL(string: name), placeholderImage: #imageLiteral(resourceName: "avatar_user"))
         imageView.wm_setImage(with: URL(string: name)!)
     }
     

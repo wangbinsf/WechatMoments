@@ -7,6 +7,5 @@ target 'WechatMoments' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'Alamofire', '~> 5.0'
   pod 'MJRefresh'
-  pod 'SDWebImage'
   pod 'M80AttributedLabel'
 end

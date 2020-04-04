@@ -40,7 +40,6 @@ class WMTweetCell: UITableViewCell {
         /// nick name
         contentView.addSubview(nickLabel)
         nickLabel.isOpaque = true
-//        nickLabel.backgroundColor = .clear
         nickLabel.font = WMConfig.shared.nickFont
         nickLabel.textColor = WMConfig.shared.nickColor
         nickLabel.snp.makeConstraints { (make) in

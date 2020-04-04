@@ -37,15 +37,6 @@ class WMTweetTextContentView: WMTweetContentView {
         textLabel.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        /// 计算文本size
-//        var height: CGFloat = 0
-//
-//        let edges = contentInset(model: model)
-//        let labelWidth = width - edges.left - edges.right
-//        if let content = model.content {
-//            label.text = content
-//            height = label.sizeThatFits(CGSize(width: labelWidth, height: CGFloat.greatestFiniteMagnitude)).height
-//        }
     }
 
 }

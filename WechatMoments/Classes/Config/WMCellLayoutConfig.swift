@@ -16,7 +16,6 @@ class WMCellLayoutConfig: WMCellLayoutConfigProtocol {
         return WMCellContentConfigFactory.shared.configBy(model: model).commentsSize(model: model, width: width)
     }
     
-    
     func contentInset(model: WMTweetModel) -> UIEdgeInsets {
         return WMCellContentConfigFactory.shared.configBy(model: model).contentInset(model: model)
     }
