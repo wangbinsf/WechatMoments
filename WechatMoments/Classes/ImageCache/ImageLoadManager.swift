@@ -24,7 +24,7 @@ class ImageLoadManager {
     private let imageDownloader = ImageDownloader()
     
     func loadImage(with url: URL, completeHandle: @escaping (UIImage?) -> Void) {
-        cacheLoader.loadCacheImage(with: url) { (image) in
+        cacheLoader.loadImage(with: url) { (image) in
             if let image = image {
                 /// 从内存或者磁盘读取到
                 DispatchQueue.main.async {

@@ -27,7 +27,6 @@
 		C345B0DB242EE45200B7A7EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C345B0D9242EE45200B7A7EC /* Main.storyboard */; };
 		C345B0DD242EE45400B7A7EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C345B0DC242EE45400B7A7EC /* Assets.xcassets */; };
 		C345B0E0242EE45400B7A7EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C345B0DE242EE45400B7A7EC /* LaunchScreen.storyboard */; };
-		C345B0EB242EE45500B7A7EC /* WechatMomentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0EA242EE45500B7A7EC /* WechatMomentsTests.swift */; };
 		C345B0FD242EED9000B7A7EC /* WMTweetsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */; };
 		C345B0FF242EEDB300B7A7EC /* WMCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B0FE242EEDB300B7A7EC /* WMCustomNavBar.swift */; };
 		C345B101242EF0DE00B7A7EC /* Pods_WechatMoments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C345B100242EF0DE00B7A7EC /* Pods_WechatMoments.framework */; };
@@ -36,8 +35,14 @@
 		C345B10F242F288500B7A7EC /* WMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B10E242F288500B7A7EC /* WMFileManager.swift */; };
 		C345B112242F29A900B7A7EC /* WMTweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B111242F29A900B7A7EC /* WMTweetCell.swift */; };
 		C345B115242F2C9E00B7A7EC /* WMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */; };
+		C3AB904C243A02BF00CF5A9E /* ImageCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB904B243A02BF00CF5A9E /* ImageCacheTests.swift */; };
+		C3AB904E243A02E200CF5A9E /* ImageCacheLoaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB904D243A02E200CF5A9E /* ImageCacheLoaderTest.swift */; };
+		C3AB9050243A201B00CF5A9E /* ImageDownLoadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AB904F243A201B00CF5A9E /* ImageDownLoadTests.swift */; };
 		C3B7FC0024382C9F00D63DD5 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7FBFF24382C9F00D63DD5 /* UIColor.swift */; };
 		C3B7FC0224382F2400D63DD5 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7FC0124382F2400D63DD5 /* UIImageView.swift */; };
+		C3B7FC082438CDA100D63DD5 /* test01.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B7FC062438CDA100D63DD5 /* test01.png */; };
+		C3B7FC092438CDA100D63DD5 /* test02.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B7FC072438CDA100D63DD5 /* test02.png */; };
+		C3B7FC0B2438D76200D63DD5 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7FC0A2438D76200D63DD5 /* Tools.swift */; };
 		C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */; };
 		C3F50EDA242F83BE00AC24F8 /* WMConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */; };
 		C3F50EDD242F858B00AC24F8 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F50EDC242F858B00AC24F8 /* Image.swift */; };
@@ -87,7 +92,6 @@
 		C345B0DF242EE45400B7A7EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C345B0E1242EE45400B7A7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C345B0E6242EE45500B7A7EC /* WechatMomentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WechatMomentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C345B0EA242EE45500B7A7EC /* WechatMomentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatMomentsTests.swift; sourceTree = "<group>"; };
 		C345B0EC242EE45500B7A7EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C345B0FC242EED9000B7A7EC /* WMTweetsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetsListViewController.swift; sourceTree = "<group>"; };
 		C345B0FE242EEDB300B7A7EC /* WMCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMCustomNavBar.swift; sourceTree = "<group>"; };
@@ -98,8 +102,14 @@
 		C345B10E242F288500B7A7EC /* WMFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMFileManager.swift; sourceTree = "<group>"; };
 		C345B111242F29A900B7A7EC /* WMTweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMTweetCell.swift; sourceTree = "<group>"; };
 		C345B114242F2C9E00B7A7EC /* WMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMDataProvider.swift; sourceTree = "<group>"; };
+		C3AB904B243A02BF00CF5A9E /* ImageCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheTests.swift; sourceTree = "<group>"; };
+		C3AB904D243A02E200CF5A9E /* ImageCacheLoaderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoaderTest.swift; sourceTree = "<group>"; };
+		C3AB904F243A201B00CF5A9E /* ImageDownLoadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownLoadTests.swift; sourceTree = "<group>"; };
 		C3B7FBFF24382C9F00D63DD5 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C3B7FC0124382F2400D63DD5 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		C3B7FC062438CDA100D63DD5 /* test01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test01.png; sourceTree = "<group>"; };
+		C3B7FC072438CDA100D63DD5 /* test02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test02.png; sourceTree = "<group>"; };
+		C3B7FC0A2438D76200D63DD5 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMAvatarImageView.swift; sourceTree = "<group>"; };
 		C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMConfig.swift; sourceTree = "<group>"; };
 		C3F50EDC242F858B00AC24F8 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -168,6 +178,7 @@
 				C3F50ED9242F83BE00AC24F8 /* WMConfig.swift */,
 				C345B10E242F288500B7A7EC /* WMFileManager.swift */,
 				C31B1AF62431EBA6002FE9A6 /* Constants.swift */,
+				C3B7FC0A2438D76200D63DD5 /* Tools.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -212,7 +223,10 @@
 		C345B0E9242EE45500B7A7EC /* WechatMomentsTests */ = {
 			isa = PBXGroup;
 			children = (
-				C345B0EA242EE45500B7A7EC /* WechatMomentsTests.swift */,
+				C3AB904F243A201B00CF5A9E /* ImageDownLoadTests.swift */,
+				C3AB904D243A02E200CF5A9E /* ImageCacheLoaderTest.swift */,
+				C3AB904B243A02BF00CF5A9E /* ImageCacheTests.swift */,
+				C3B7FC052438CD7600D63DD5 /* Images */,
 				C345B0EC242EE45500B7A7EC /* Info.plist */,
 			);
 			path = WechatMomentsTests;
@@ -233,7 +247,6 @@
 				C345B109242EF73D00B7A7EC /* Model */,
 				C345B0D3242EE45200B7A7EC /* AppDelegate.swift */,
 				C345B0D5242EE45200B7A7EC /* SceneDelegate.swift */,
-				C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -266,6 +279,7 @@
 				C3F50ED7242F82D800AC24F8 /* WMAvatarImageView.swift */,
 				C3F50EDE242F931A00AC24F8 /* WMCommentsView.swift */,
 				C31B1AF42431EB60002FE9A6 /* WMAlbumCover.swift */,
+				C336049F2430290000FC8B31 /* WMTweetTableViewAdapter.swift */,
 				C3239BC524345932000ED609 /* WMExtensionView.swift */,
 			);
 			path = View;
@@ -278,6 +292,15 @@
 				C31D1CCC24331322005DB1A1 /* WMHTTPTool.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		C3B7FC052438CD7600D63DD5 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C3B7FC062438CDA100D63DD5 /* test01.png */,
+				C3B7FC072438CDA100D63DD5 /* test02.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		C3F50EDB242F855500AC24F8 /* Extension */ = {
@@ -385,6 +408,7 @@
 					};
 					C345B0E5242EE45500B7A7EC = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = C345B0CF242EE45200B7A7EC;
 					};
 				};
@@ -424,6 +448,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B7FC082438CDA100D63DD5 /* test01.png in Resources */,
+				C3B7FC092438CDA100D63DD5 /* test02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +517,7 @@
 				C33604A6243062DD00FC8B31 /* WMImageContentConfig.swift in Sources */,
 				C3F50ED8242F82D800AC24F8 /* WMAvatarImageView.swift in Sources */,
 				C31B1AF72431EBA6002FE9A6 /* Constants.swift in Sources */,
+				C3B7FC0B2438D76200D63DD5 /* Tools.swift in Sources */,
 				C33604A4243055E400FC8B31 /* WMTweetImageContentView.swift in Sources */,
 				C33604A824307BEC00FC8B31 /* WMTweetTextImageContentView.swift in Sources */,
 				C33604A02430290000FC8B31 /* WMTweetTableViewAdapter.swift in Sources */,
@@ -518,7 +545,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C345B0EB242EE45500B7A7EC /* WechatMomentsTests.swift in Sources */,
+				C3AB904C243A02BF00CF5A9E /* ImageCacheTests.swift in Sources */,
+				C3AB904E243A02E200CF5A9E /* ImageCacheLoaderTest.swift in Sources */,
+				C3AB9050243A201B00CF5A9E /* ImageDownLoadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +740,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WechatMomentsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -721,6 +751,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangbinsf.WechatMomentsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WechatMoments.app/WechatMoments";
@@ -732,6 +763,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WechatMomentsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
